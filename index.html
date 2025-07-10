@@ -12,6 +12,8 @@
             font-family: 'Inter', sans-serif;
             background-color: #f0f2f5; /* Light gray background */
             color: #333;
+            /* Add padding to the top of the body to prevent content from being hidden behind the fixed header */
+            padding-top: 5.5rem; /* Adjusted based on new header height */
         }
         .container {
             max-width: 1200px;
@@ -43,14 +45,45 @@
         .btn-primary:hover {
             background-color: #4338ca; /* indigo-700 */
         }
+        /* Custom style for the scroll-to-top button */
+        #scrollToTopBtn {
+            display: none; /* Hidden by default */
+            position: fixed; /* Fixed position */
+            bottom: 20px; /* Place the button at the bottom of the page */
+            right: 20px; /* Place the button at the right */
+            z-index: 99; /* Make sure it does not overlap */
+            border: none; /* Remove borders */
+            outline: none; /* Remove outline */
+            background-color: #4f46e5; /* Set a background color */
+            color: white; /* Text color */
+            cursor: pointer; /* Add a mouse pointer on hover */
+            padding: 15px; /* Some padding */
+            border-radius: 50%; /* Rounded shape */
+            font-size: 1.5rem; /* Increase font size */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Add shadow */
+            transition: background-color 0.3s, opacity 0.3s;
+            opacity: 0.8;
+        }
+
+        #scrollToTopBtn:hover {
+            background-color: #4338ca; /* Darker background on hover */
+            opacity: 1;
+        }
     </style>
 </head>
 <body class="antialiased">
 
-    <!-- Header Section -->
-    <header class="bg-indigo-600 text-white py-6 shadow-lg">
+    <!-- Header Section - Adjusted padding for smaller height -->
+    <header class="bg-indigo-600 text-white py-3 shadow-lg fixed top-0 w-full z-50">
         <div class="container flex flex-col md:flex-row justify-between items-center">
-            <h1 class="text-4xl font-bold mb-4 md:mb-0">Pranay Jaiswal</h1>
+            <div class="flex items-center mb-4 md:mb-0">
+                <!-- Profile Image updated size -->
+                <img src="https://ca.slack-edge.com/T02C9K3DS-U055R2DGC8M-5582873639ff-512"
+                     alt="Pranay Jaiswal Profile"
+                     class="w-16 h-16 rounded-xl mr-3 border-2 border-white object-cover flex-shrink-0"
+                     onerror="this.onerror=null; this.src='https://placehold.co/64x64/cccccc/000000?text=PJ';">
+                <h1 class="text-4xl font-bold">Pranay Jaiswal</h1>
+            </div>
             <nav>
                 <ul class="flex space-x-6">
                     <li><a href="#about" class="hover:underline text-lg">About</a></li>
@@ -291,11 +324,44 @@
                 <p class="text-lg mb-4">I'm always open to new opportunities and collaborations. Feel free to reach out!</p>
                 <p class="text-xl font-semibold mb-2">Phone: (+91) 8766708714</p>
                 <p class="text-xl font-semibold mb-4">Email: <a href="mailto:pranay.jaiswal.1995@gmail.com" class="text-indigo-600 hover:underline">pranay.jaiswal.1995@gmail.com</a></p>
+                <!-- Link to your CV/Resume file -->
                 <a href="https://www.linkedin.com/in/pranay-jaiswal-4474952a7/" target="_blank" class="btn-primary inline-block mr-4">LinkedIn Profile</a>
                 <a href="https://raw.githubusercontent.com/Pranay-Jaiswal-1995/pranay-jaiswal-portfolio/main/Pranay%20Jaiswal%20CV%20-%20June%202024%20(1).pdf" target="_blank" class="btn-primary inline-block">Download CV</a>
             </div>
         </div>
     </section>
+
+    <!-- Scroll to Top Button -->
+    <button id="scrollToTopBtn" title="Go to top">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M5 10l7-7m0 0l7 7m-7-7v18" />
+        </svg>
+    </button>
+
+    <!-- JavaScript for Scroll to Top Button functionality -->
+    <script>
+        // Get the button
+        let mybutton = document.getElementById("scrollToTopBtn");
+
+        // When the user scrolls down 20px from the top of the document, show the button
+        window.onscroll = function() {scrollFunction()};
+
+        function scrollFunction() {
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                mybutton.style.display = "block";
+            } else {
+                mybutton.style.display = "none";
+            }
+        }
+
+        // When the user clicks on the button, scroll to the top of the document
+        mybutton.addEventListener("click", function() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth' // Smooth scroll
+            });
+        });
+    </script>
 
     <!-- Footer -->
     <footer class="bg-gray-800 text-white py-6 text-center">
