@@ -9,246 +9,310 @@
   <style>
     body {
       font-family: 'Inter', sans-serif;
-      background-color: #f8fafc;
+      background-color: #f0f2f5;
+      color: #333;
+      padding-top: 6rem;
     }
-    html {
-      scroll-behavior: smooth;
+    .btn-primary {
+      @apply bg-indigo-600 text-white py-3 px-6 rounded-lg transition hover:bg-indigo-700;
+    }
+    #scrollToTopBtn {
+      display: none;
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 99;
+      background-color: #4f46e5;
+      color: white;
+      cursor: pointer;
+      padding: 15px;
+      border-radius: 50%;
+      font-size: 1.5rem;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      opacity: 0.8;
+      transition: background-color 0.3s, opacity 0.3s;
+    }
+    #scrollToTopBtn:hover {
+      background-color: #4338ca;
+      opacity: 1;
     }
   </style>
 </head>
-<body class="antialiased text-gray-800">
+<body class="antialiased">
 
-  <!-- Header -->
-  <header class="fixed w-full bg-indigo-600 text-white shadow-md z-50">
-    <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
-      <div class="flex items-center space-x-3">
-        <img src="https://ca.slack-edge.com/T02C9K3DS-U055R2DGC8M-5582873639ff-512" alt="Pranay Jaiswal" class="h-12 w-12 rounded-full object-cover border-2 border-white">
-        <span class="text-xl font-bold">Pranay Jaiswal</span>
+  <!-- HEADER -->
+  <header class="bg-indigo-600 text-white py-2 shadow-lg fixed top-0 w-full z-50">
+    <div class="container mx-auto px-4 flex flex-col md:flex-row justify-between items-center relative">
+      <div class="flex items-center mb-4 md:mb-0 relative">
+        <img id="profileImage"
+             src="https://ca.slack-edge.com/T02C9K3DS-U055R2DGC8M-5582873639ff-512"
+             alt="Pranay Jaiswal Profile"
+             class="w-16 h-16 rounded-xl mr-3 border-2 border-white object-cover cursor-pointer"
+             onerror="this.onerror=null; this.src='https://placehold.co/80x80/cccccc/000000?text=PJ';">
+
+        <a href="#home" class="text-3xl font-bold text-white no-underline cursor-pointer">Pranay Jaiswal</a>
+
+        <div id="popoverCard"
+             class="absolute top-20 left-0 bg-white text-gray-800 rounded-lg shadow-lg p-4 w-72 hidden z-50">
+          <h3 class="text-xl font-bold mb-2 border-b pb-1 text-indigo-700">Pranay Jaiswal</h3>
+          <ul class="text-sm space-y-1">
+            <li><strong>Phone:</strong> (+91) 8766708714</li>
+            <li><strong>Email:</strong> <a href="mailto:pranay.jaiswal.1995@gmail.com" class="text-indigo-600 hover:underline">pranay.jaiswal.1995@gmail.com</a></li>
+            <li><strong>Address:</strong> Hyderabad, Telangana</li>
+            <li><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/pranay-jaiswal-4474952a7/" target="_blank" class="text-indigo-600 hover:underline">View Profile</a></li>
+          </ul>
+        </div>
       </div>
-      <nav class="hidden md:flex space-x-6">
-        <a href="#about" class="hover:text-gray-300">About</a>
-        <a href="#experience" class="hover:text-gray-300">Experience</a>
-        <a href="#education" class="hover:text-gray-300">Education</a>
-        <a href="#projects" class="hover:text-gray-300">Projects</a>
-        <a href="#skills" class="hover:text-gray-300">Skills</a>
-        <a href="#contact" class="hover:text-gray-300">Contact</a>
+      <nav>
+        <ul class="flex space-x-6">
+          <li><a href="#about" class="text-lg">About</a></li>
+          <li><a href="#experience" class="text-lg">Experience</a></li>
+          <li><a href="#education" class="text-lg">Education</a></li>
+          <li><a href="#skills" class="text-lg">Skills</a></li>
+          <li><a href="#projects" class="text-lg">Projects</a></li>
+          <li><a href="#contact" class="text-lg">Contact</a></li>
+        </ul>
       </nav>
     </div>
   </header>
 
-<!-- Hero -->
-<section class="pt-36 pb-36 bg-gradient-to-r from-indigo-500 to-purple-600 text-white text-center">
-  <div class="max-w-4xl mx-auto px-4">
-    <h1 class="text-5xl font-extrabold mb-6">Experienced Team Lead & Customer Support Specialist</h1>
-    <p class="text-xl mb-8">Empowering teams. Solving problems. Delivering excellence. Salary Expectation: 8.5 LPA+</p>
-    <a href="#contact" class="inline-block bg-white text-indigo-600 font-semibold px-6 py-3 rounded-lg shadow hover:bg-gray-100 transition">Get in Touch</a>
-  </div>
-</section>
-  <!-- About -->
-  <section id="about" class="py-16 bg-white">
-    <div class="max-w-4xl mx-auto px-4">
-      <h2 class="text-4xl font-bold text-center text-indigo-700 mb-8">About Me</h2>
-      <div class="bg-white rounded-xl shadow p-6 text-lg leading-relaxed">
-        <p class="mb-4">
-          I'm an experienced and results-driven Team Lead with a strong background in customer support. Passionate about empowering teams, driving performance, and ensuring exceptional customer experiences.
-        </p>
-        <p class="mb-4">
-          Focused on problem-solving and process improvement, I've led my team to achieve high CSAT and QA scores while fostering a collaborative work environment. My approach combines technical expertise with strong communication and leadership skills.
-        </p>
+  <!-- HERO -->
+  <section id="home" class="bg-gradient-to-r from-indigo-500 to-purple-600 text-white py-28 md:py-36 text-center">
+    <div class="container mx-auto px-4">
+      <h2 class="text-5xl font-extrabold mb-4">Experienced Team Lead | Customer Support & Operations Specialist</h2>
+      <p class="text-xl mb-8 max-w-2xl mx-auto">Empowering teams, driving performance, and ensuring exceptional customer experiences through leadership, mentoring, and process excellence.</p>
+      <a href="#contact" class="btn-primary inline-block">Get in Touch</a>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about" class="py-16 bg-white scroll-mt-[6rem]">
+    <div class="container mx-auto px-4">
+      <h2 class="text-4xl font-bold text-center mb-6">About Me</h2>
+      <div class="bg-white rounded-xl shadow-md p-6 max-w-3xl mx-auto text-lg leading-relaxed">
+        <p class="mb-4">I am an experienced and results-driven Team Lead with a strong background in customer support. I’m passionate about empowering teams, driving performance, and ensuring exceptional customer experiences.</p>
+        <p class="mb-4">With a focus on problem-solving and process improvement, I’ve led my team to consistently achieve high CSAT and QA scores while fostering a positive and collaborative work environment. My approach combines technical expertise with strong communication and leadership skills to deliver effective solutions and support.</p>
         <ul class="list-disc list-inside space-y-2">
           <li>✅ Skilled in handling complex cases and troubleshooting issues</li>
           <li>✅ Experienced in coaching and mentoring team members for growth</li>
           <li>✅ Committed to improving operational efficiency and team performance</li>
-          <li>✅ Always motivated by challenges and eager to learn and grow</li>
         </ul>
+        <p class="mt-4">I’m motivated by challenges and always eager to learn and grow.</p>
       </div>
     </div>
   </section>
 
-  <!-- Experience -->
-  <section id="experience" class="py-16 bg-gray-50">
-    <div class="max-w-5xl mx-auto px-4">
-      <h2 class="text-4xl font-bold text-center text-indigo-700 mb-8">Experience</h2>
+  <!-- EXPERIENCE -->
+  <section id="experience" class="bg-gray-100 py-16 scroll-mt-[6rem]">
+    <div class="container mx-auto px-4">
+      <h2 class="text-4xl font-bold text-center mb-6">Experience</h2>
 
-      <!-- WebPT Current -->
-      <div class="bg-white rounded-xl shadow p-6 mb-6">
-        <h3 class="text-2xl font-semibold text-indigo-600 mb-2">Team Lead - Operations (WebPT India PVT LTD)</h3>
-        <p class="text-gray-600 mb-4">Hyderabad, TS | March 2025 – Present</p>
-        <ul class="list-disc list-inside space-y-2">
-          <li>Leading a team providing EMR support via email and chat.</li>
-          <li>Driving performance, improving CSAT and QA scores.</li>
-          <li>Handling complex cases, troubleshooting, and process improvement.</li>
-          <li>Mentoring and guiding team members for growth.</li>
+      <!-- WebPT -->
+      <div class="bg-white rounded-xl shadow-md p-6 mb-6">
+        <h3 class="text-2xl font-semibold text-indigo-700">WebPT India PVT LTD</h3>
+        <p class="text-gray-600 mb-2">Hyderabad, Telangana | March 2025 – Present</p>
+        <p class="mb-2"><strong>Team Lead - Operations</strong></p>
+        <ul class="list-disc list-inside text-lg space-y-1 mb-4">
+          <li>Leading a team of skilled agents to provide seamless support through email and chat.</li>
+          <li>Focused on improving team performance, enhancing CSAT and QA scores, and driving operational efficiency.</li>
+          <li>Experienced in handling complex EMR cases, troubleshooting, and process improvement.</li>
+          <li>Committed to mentoring and guiding team members to grow professionally.</li>
         </ul>
-      </div>
-
-      <div class="bg-white rounded-xl shadow p-6 mb-6">
-        <h3 class="text-2xl font-semibold text-indigo-600 mb-2">Support Team Lead Trainer</h3>
-        <p class="text-gray-600 mb-4">WebPT India PVT LTD | April 2024 – March 2025</p>
-        <ul class="list-disc list-inside space-y-2">
+        <p class="mb-2"><strong>Support Team Lead Trainer (April 2024 - March 2025)</strong></p>
+        <ul class="list-disc list-inside text-lg space-y-1 mb-4">
           <li>Conducted daily huddles and knowledge checks.</li>
-          <li>Analyzed escalations for root cause and provided coaching.</li>
+          <li>Analyzed escalations to find root causes and provided targeted coaching.</li>
           <li>Identified training needs and bridged knowledge gaps.</li>
-          <li>Led initiatives to enhance team well-being.</li>
+          <li>Led new initiatives and ensured team well-being.</li>
         </ul>
-      </div>
-
-      <div class="bg-white rounded-xl shadow p-6 mb-6">
-        <h3 class="text-2xl font-semibold text-indigo-600 mb-2">Trainer + QA Analyst</h3>
-        <p class="text-gray-600 mb-4">WebPT India PVT LTD | May 2023 – April 2024</p>
-        <ul class="list-disc list-inside space-y-2">
+        <p class="mb-2"><strong>Trainer + QA Analyst (May 2023 - April 2024)</strong></p>
+        <ul class="list-disc list-inside text-lg space-y-1">
           <li>Delivered technical support training programs.</li>
-          <li>Developed training materials and organized sessions.</li>
-          <li>Conducted needs assessments and designed programs.</li>
-          <li>Mentored new staff and evaluated training effectiveness.</li>
+          <li>Developed training materials and organized training sessions.</li>
+          <li>Conducted needs assessments and designed training programs.</li>
+          <li>Evaluated training effectiveness and mentored new staff.</li>
         </ul>
       </div>
 
       <!-- Amazon -->
-      <div class="bg-white rounded-xl shadow p-6 mb-6">
-        <h3 class="text-2xl font-semibold text-indigo-600 mb-2">Lead Trainer (Amazon)</h3>
-        <p class="text-gray-600 mb-4">Feb 2021 – April 2023</p>
-        <ul class="list-disc list-inside space-y-2">
-          <li>Delivered technical training and created materials.</li>
-          <li>Planned sessions and evaluated success.</li>
-          <li>Stayed updated on trends and collaborated with teams.</li>
+      <div class="bg-white rounded-xl shadow-md p-6 mb-6">
+        <h3 class="text-2xl font-semibold text-indigo-700">Amazon</h3>
+        <p class="text-gray-600 mb-2">February 2021 – April 2023 | India</p>
+        <p class="mb-2"><strong>Lead Trainer</strong></p>
+        <ul class="list-disc list-inside text-lg space-y-1 mb-4">
+          <li>Delivered technical support training and created training materials.</li>
+          <li>Planned sessions, assessed needs, and evaluated training success.</li>
+          <li>Stayed updated on industry trends and collaborated with support teams.</li>
         </ul>
-      </div>
-
-      <div class="bg-white rounded-xl shadow p-6 mb-6">
-        <h3 class="text-2xl font-semibold text-indigo-600 mb-2">Interim Trainer (Amazon)</h3>
-        <p class="text-gray-600 mb-4">Jun 2020 – Feb 2021</p>
-        <ul class="list-disc list-inside space-y-2">
-          <li>Designed and delivered communication training.</li>
-          <li>Conducted sessions and maintained records.</li>
+        <p class="mb-2"><strong>Interim Trainer (June 2020 - Feb 2021)</strong></p>
+        <ul class="list-disc list-inside text-lg space-y-1 mb-4">
+          <li>Designed and delivered training programs for communication techniques.</li>
+          <li>Conducted training sessions, evaluated effectiveness, and maintained records.</li>
         </ul>
-      </div>
-
-      <div class="bg-white rounded-xl shadow p-6">
-        <h3 class="text-2xl font-semibold text-indigo-600 mb-2">SDA Associate (Customer Service Agent, Amazon)</h3>
-        <p class="text-gray-600 mb-4">Sep 2018 – Feb 2021</p>
-        <ul class="list-disc list-inside space-y-2">
-          <li>Managed exceptions for delivery optimization.</li>
-          <li>Worked under deadlines, delivering creative solutions.</li>
+        <p class="mb-2"><strong>SDA Associate (Sep 2018 - Feb 2021)</strong></p>
+        <ul class="list-disc list-inside text-lg space-y-1">
+          <li>Managed exceptions to optimize delivery experiences for flex drivers.</li>
+          <li>Worked under strict deadlines and developed creative solutions.</li>
         </ul>
       </div>
     </div>
   </section>
-
-  <!-- Education -->
-  <section id="education" class="py-16 bg-white">
-    <div class="max-w-4xl mx-auto px-4">
-      <h2 class="text-4xl font-bold text-center text-indigo-700 mb-8">Education</h2>
-      <div class="bg-white rounded-xl shadow p-6 text-lg leading-relaxed">
+    <!-- EDUCATION -->
+  <section id="education" class="py-16 bg-white scroll-mt-[6rem]">
+    <div class="container mx-auto px-4">
+      <h2 class="text-4xl font-bold text-center mb-6">Education</h2>
+      <div class="bg-white rounded-xl shadow-md p-6 max-w-3xl mx-auto text-lg leading-relaxed">
         <ul class="list-disc list-inside space-y-2">
-          <li><strong>B.Tech/BE in Computer Science & Engineering</strong> (2015 - 2018)</li>
-          <li><strong>Diploma in Information Technology (Polytechnic)</strong> (2011 - 2015)</li>
+          <li><strong>B.Tech/BE</strong>, Computer Science & Engineering (2015 - 2018)</li>
+          <li><strong>Diploma</strong> in Information Technology (Polytechnic) (2011 - 2015)</li>
         </ul>
       </div>
     </div>
   </section>
-
-  <!-- Projects -->
-  <section id="projects" class="py-16 bg-gray-50">
-    <div class="max-w-5xl mx-auto px-4">
-      <h2 class="text-4xl font-bold text-center text-indigo-700 mb-8">Projects</h2>
-
-      <div class="space-y-6">
-        <div class="bg-white rounded-xl shadow p-6">
-          <h3 class="text-2xl font-semibold text-indigo-600 mb-2">QA Automation (WebPT)</h3>
-          <p class="text-gray-600 mb-4">Status: COMPLETED</p>
-          <p>Developed a system to automate audit data input and feedback sharing, improving efficiency, accuracy, and saving time for the QA team.</p>
-        </div>
-
-        <div class="bg-white rounded-xl shadow p-6">
-          <h3 class="text-2xl font-semibold text-indigo-600 mb-2">Updates Tracker/Website (WebPT)</h3>
-          <p class="text-gray-600 mb-4">Status: COMPLETED</p>
-          <p>Centralized and automated the update-sharing process, boosting workflow efficiency and documentation accuracy for the entire team.</p>
-        </div>
-
-        <div class="bg-white rounded-xl shadow p-6">
-          <h3 class="text-2xl font-semibold text-indigo-600 mb-2">Soft-skills Course (WebPT)</h3>
-          <p class="text-gray-600 mb-4">Status: COMPLETED</p>
-          <p>Developed and delivered interactive training sessions to improve customer service skills, resulting in higher CSAT scores and more growth opportunities for agents.</p>
-        </div>
-
-        <div class="bg-white rounded-xl shadow p-6">
-          <h3 class="text-2xl font-semibold text-indigo-600 mb-2">Attendance Tracking System (WebPT)</h3>
-          <p class="text-gray-600 mb-4">Status: COMPLETED</p>
-          <p>Built a system to automate attendance and leave management, reducing admin burden and improving accuracy. Integrated with the Leave Tracker website for agent-friendly planning.</p>
-        </div>
-
-        <div class="bg-white rounded-xl shadow p-6">
-          <h3 class="text-2xl font-semibold text-indigo-600 mb-2">Knowledge Check (WebPT)</h3>
-          <p class="text-gray-600 mb-4">Status: COMPLETED</p>
-          <p>Implemented daily questions in Slack to foster a culture of learning and improve team knowledge retention and engagement.</p>
-        </div>
-
-        <div class="bg-white rounded-xl shadow p-6">
-          <h3 class="text-2xl font-semibold text-indigo-600 mb-2">Comprehensive Training for Bottom Performers (WebPT)</h3>
-          <p class="text-gray-600 mb-4">Status: COMPLETED</p>
-          <p>Launched weekly training and shadowing sessions to improve workflow efficiency, communication, and problem-solving skills of underperforming agents.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Skills -->
-  <section id="skills" class="py-16 bg-white">
-    <div class="max-w-5xl mx-auto px-4">
-      <h2 class="text-4xl font-bold text-center text-indigo-700 mb-8">Skills</h2>
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        <div class="bg-gray-50 rounded-xl shadow p-6">
-          <h3 class="text-xl font-semibold text-indigo-600 mb-4">Leadership & Management</h3>
-          <ul class="list-disc list-inside space-y-2">
+  <!-- SKILLS -->
+  <section id="skills" class="bg-gray-100 py-16 scroll-mt-[6rem]">
+    <div class="container mx-auto px-4">
+      <h2 class="text-4xl font-bold text-center mb-6">Skills</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
+        <div class="bg-white rounded-xl shadow-md p-6">
+          <ul class="list-disc list-inside space-y-2 text-lg">
             <li>Team Leadership</li>
             <li>Performance Management</li>
             <li>Coaching & Mentoring</li>
-            <li>Project Management</li>
+            <li>Process Improvement</li>
             <li>Conflict Resolution</li>
-            <li>Workflow Optimization</li>
-            <li>Ownership & Flexibility</li>
           </ul>
         </div>
-        <div class="bg-gray-50 rounded-xl shadow p-6">
-          <h3 class="text-xl font-semibold text-indigo-600 mb-4">Operations & Support</h3>
-          <ul class="list-disc list-inside space-y-2">
+        <div class="bg-white rounded-xl shadow-md p-6">
+          <ul class="list-disc list-inside space-y-2 text-lg">
+            <li>Workflow Optimization</li>
+            <li>Report Building & Analytics</li>
             <li>Quality Assurance (QA)</li>
             <li>CSAT Improvement</li>
-            <li>Complex Problem Solving</li>
-            <li>Process Improvement</li>
-            <li>Report Building and Analytics</li>
+            <li>Merit Discussion</li>
           </ul>
         </div>
-        <div class="bg-gray-50 rounded-xl shadow p-6">
-          <h3 class="text-xl font-semibold text-indigo-600 mb-4">Personal Attributes</h3>
-          <ul class="list-disc list-inside space-y-2">
-            <li>Self-Motivated</li>
+        <div class="bg-white rounded-xl shadow-md p-6">
+          <ul class="list-disc list-inside space-y-2 text-lg">
+            <li>Project Management</li>
             <li>Time Management</li>
-            <li>Adaptability</li>
-            <li>Communication</li>
-            <li>Team Player</li>
+            <li>Complex Problem Solving</li>
+            <li>Ownership & Accountability</li>
+            <li>Self-Motivating</li>
           </ul>
         </div>
       </div>
     </div>
   </section>
+    <!-- PROJECTS -->
+  <section id="projects" class="py-16 bg-white scroll-mt-[6rem]">
+    <div class="container mx-auto px-4">
+      <h2 class="text-4xl font-bold text-center mb-6">Projects</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
 
-  <!-- Contact -->
-  <section id="contact" class="py-16 bg-indigo-600 text-white text-center">
-    <div class="max-w-xl mx-auto px-4">
-      <h2 class="text-4xl font-bold mb-8">Get in Touch</h2>
-      <p class="text-lg mb-6">Always open to opportunities and collaborations. Let’s connect!</p>
-      <p class="text-xl font-semibold mb-2">📞 (+91) 8766708714</p>
-      <p class="text-xl font-semibold mb-4">📧 <a href="mailto:pranay.jaiswal.1995@gmail.com" class="underline">pranay.jaiswal.1995@gmail.com</a></p>
-      <a href="https://www.linkedin.com/in/pranay-jaiswal-4474952a7/" target="_blank" class="inline-block bg-white text-indigo-600 font-semibold px-6 py-3 rounded-lg shadow hover:bg-gray-100 transition mr-4">LinkedIn Profile</a>
-      <a href="https://raw.githubusercontent.com/Pranay-Jaiswal-1995/pranay-jaiswal-portfolio/main/Pranay%20Jaiswal%20CV%20-%20June%202024%20(1).pdf" target="_blank" class="inline-block bg-white text-indigo-600 font-semibold px-6 py-3 rounded-lg shadow hover:bg-gray-100 transition">Download CV</a>
+        <!-- Project 1 -->
+        <div class="bg-gray-50 rounded-xl shadow-md p-6">
+          <h3 class="text-2xl font-semibold text-indigo-700 mb-2">QA Automation (WebPT)</h3>
+          <p class="text-gray-700 mb-4">Status: COMPLETED</p>
+          <p class="text-lg leading-relaxed">
+            Developed a system to streamline data input for audits, replacing inefficient manual processes. This automation improved efficiency, accuracy, and enhanced QA productivity.
+          </p>
+        </div>
+
+        <!-- Project 2 -->
+        <div class="bg-gray-50 rounded-xl shadow-md p-6">
+          <h3 class="text-2xl font-semibold text-indigo-700 mb-2">Updates Tracker/Website (WebPT)</h3>
+          <p class="text-gray-700 mb-4">Status: COMPLETED</p>
+          <p class="text-lg leading-relaxed">
+            Centralized and automated the update-sharing process to improve communication, workflow efficiency, and documentation accuracy for the team.
+          </p>
+        </div>
+
+        <!-- Project 3 -->
+        <div class="bg-gray-50 rounded-xl shadow-md p-6">
+          <h3 class="text-2xl font-semibold text-indigo-700 mb-2">Soft-skills Course (WebPT)</h3>
+          <p class="text-gray-700 mb-4">Status: COMPLETED</p>
+          <p class="text-lg leading-relaxed">
+            Designed and delivered an interactive training session to improve customer service skills, increase CSAT scores, and promote team growth.
+          </p>
+        </div>
+
+        <!-- Project 4 -->
+        <div class="bg-gray-50 rounded-xl shadow-md p-6">
+          <h3 class="text-2xl font-semibold text-indigo-700 mb-2">Attendance Tracking System (WebPT)</h3>
+          <p class="text-gray-700 mb-4">Status: COMPLETED</p>
+          <p class="text-lg leading-relaxed">
+            Created a system to automate daily attendance tracking and leave categorization. Integrated with a leave tracker website to highlight available dates with green, amber, and red colors.
+          </p>
+        </div>
+
+        <!-- Project 5 -->
+        <div class="bg-gray-50 rounded-xl shadow-md p-6">
+          <h3 class="text-2xl font-semibold text-indigo-700 mb-2">Knowledge Check (WebPT)</h3>
+          <p class="text-gray-700 mb-4">Status: COMPLETED</p>
+          <p class="text-lg leading-relaxed">
+            Initiated a daily Slack channel question to encourage engagement, knowledge sharing, and continuous learning among team members.
+          </p>
+        </div>
+
+        <!-- Project 6 -->
+        <div class="bg-gray-50 rounded-xl shadow-md p-6">
+          <h3 class="text-2xl font-semibold text-indigo-700 mb-2">Comprehensive Training for Bottom Performers (WebPT)</h3>
+          <p class="text-gray-700 mb-4">Status: COMPLETED</p>
+          <p class="text-lg leading-relaxed">
+            Started weekly shadowing and training sessions for underperforming agents, focusing on workflow efficiency, communication skills, and problem-solving to elevate overall team performance.
+          </p>
+        </div>
+
+      </div>
     </div>
   </section>
-
-  <!-- Footer -->
-  <footer class="bg-gray-800 text-white py-4 text-center">
-    <p>&copy; 2025 Pranay Jaiswal. All rights reserved.</p>
+  <!-- CONTACT -->
+  <section id="contact" class="py-16 bg-indigo-50 scroll-mt-[6rem]">
+    <div class="container mx-auto px-4 max-w-2xl text-center">
+      <h2 class="text-4xl font-bold text-indigo-700 mb-6">Get in Touch</h2>
+      <p class="text-lg mb-4">
+        I'm always open to new opportunities and collaborations. Feel free to reach out!
+      </p>
+      <div class="bg-white rounded-xl shadow-md p-6">
+        <p class="text-lg mb-2"><strong>Phone:</strong> <a href="tel:+918766708714" class="text-indigo-600 hover:underline">(+91) 8766708714</a></p>
+        <p class="text-lg mb-4"><strong>Email:</strong> <a href="mailto:pranay.jaiswal.1995@gmail.com" class="text-indigo-600 hover:underline">pranay.jaiswal.1995@gmail.com</a></p>
+        <p class="text-lg mb-4"><strong>Address:</strong> Hyderabad, Telangana</p>
+        <div class="flex justify-center space-x-4 mt-4">
+          <a href="https://www.linkedin.com/in/pranay-jaiswal-4474952a7/" target="_blank" class="btn-primary inline-block">LinkedIn Profile</a>
+          <a href="https://raw.githubusercontent.com/Pranay-Jaiswal-1995/pranay-jaiswal-portfolio/main/Pranay%20Jaiswal%20CV%20-%20June%202024%20(1).pdf" target="_blank" class="btn-primary inline-block">Download CV</a>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- FOOTER -->
+  <footer class="bg-gray-800 text-white py-6 text-center">
+    <div class="container mx-auto">
+      <p>&copy; 2025 Pranay Jaiswal. All rights reserved.</p>
+    </div>
   </footer>
+  <!-- Scroll to Top Button -->
+  <button id="scrollToTopBtn" title="Go to top" class="fixed bottom-6 right-6 bg-indigo-600 hover:bg-indigo-700 text-white rounded-full p-3 shadow-lg transition-opacity duration-300 opacity-80">
+    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M5 10l7-7m0 0l7 7m-7-7v18" />
+    </svg>
+  </button>
+
+  <script>
+    // Scroll to Top Button functionality
+    const scrollBtn = document.getElementById("scrollToTopBtn");
+    window.addEventListener("scroll", () => {
+      if (window.scrollY > 200) {
+        scrollBtn.style.display = "block";
+      } else {
+        scrollBtn.style.display = "none";
+      }
+    });
+    scrollBtn.addEventListener("click", () => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+  </script>
+
+
 </body>
 </html>
