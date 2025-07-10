@@ -36,6 +36,26 @@
       background-color: #4338ca;
       opacity: 1;
     }
+    #profileModal {
+  backdrop-filter: blur(4px);
+  transition: opacity 0.3s ease;
+}
+
+#profileModal .bg-white {
+  animation: modalFade 0.3s ease;
+}
+
+@keyframes modalFade {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
   </style>
 </head>
 <body class="antialiased">
@@ -44,11 +64,11 @@
   <header class="bg-indigo-600 text-white py-2 shadow-lg fixed top-0 w-full z-50">
     <div class="container mx-auto px-4 flex flex-col md:flex-row justify-between items-center relative">
       <div class="flex items-center mb-4 md:mb-0 relative">
-        <img id="profileImage"
-             src="https://ca.slack-edge.com/T02C9K3DS-U055R2DGC8M-5582873639ff-512"
-             alt="Pranay Jaiswal Profile"
-             class="w-16 h-16 rounded-xl mr-3 border-2 border-white object-cover cursor-pointer"
-             onerror="this.onerror=null; this.src='https://placehold.co/80x80/cccccc/000000?text=PJ';">
+        <img id="profileImage" src="https://ca.slack-edge.com/T02C9K3DS-U055R2DGC8M-5582873639ff-512"
+     alt="Pranay Jaiswal Profile"
+     class="w-20 h-20 rounded-xl mr-3 border-2 border-white object-cover cursor-pointer hover:ring-4 hover:ring-indigo-300 transition-all duration-300"
+     onerror="this.onerror=null; this.src='https://placehold.co/80x80/cccccc/000000?text=PJ';">
+
 
         <a href="#home" class="text-3xl font-bold text-white no-underline cursor-pointer">Pranay Jaiswal</a>
 
@@ -75,6 +95,21 @@
       </nav>
     </div>
   </header>
+<!-- Profile Modal -->
+<div id="profileModal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50">
+  <div class="bg-white rounded-lg shadow-xl max-w-sm w-full p-6 relative">
+    <button id="closeModal" class="absolute top-3 right-3 text-gray-500 hover:text-gray-700">
+      &times;
+    </button>
+    <h2 class="text-2xl font-bold text-indigo-700 mb-4">Pranay Jaiswal</h2>
+    <p class="text-gray-700 mb-2"><strong>Phone:</strong> (+91) 8766708714</p>
+    <p class="text-gray-700 mb-2"><strong>Email:</strong> pranay.jaiswal.1995@gmail.com</p>
+    <p class="text-gray-700 mb-2"><strong>Address:</strong> Hyderabad, Telangana</p>
+    <p class="text-gray-700 mb-2"><strong>Education:</strong> B.Tech/BE in Computer Science & Engineering</p>
+    <p class="text-gray-700 mb-2"><strong>Experience:</strong> ~6+ years total</p>
+    <p class="text-gray-700">✅ Team Leadership<br>✅ QA & CSAT Improvement<br>✅ Process Improvement<br>✅ Coaching & Mentoring</p>
+  </div>
+</div>
 
   <!-- HERO -->
   <section id="home" class="bg-gradient-to-r from-indigo-500 to-purple-600 text-white py-28 md:py-36 text-center">
@@ -311,7 +346,27 @@
     scrollBtn.addEventListener("click", () => {
       window.scrollTo({ top: 0, behavior: "smooth" });
     });
-  </script>
+
+  // Modal open/close logic
+  const profileImg = document.getElementById("profileImage");
+  const modal = document.getElementById("profileModal");
+  const closeModal = document.getElementById("closeModal");
+
+  profileImg.addEventListener("click", () => {
+    modal.classList.remove("hidden");
+    modal.classList.add("flex");
+  });
+
+  closeModal.addEventListener("click", () => {
+    modal.classList.add("hidden");
+  });
+
+  window.addEventListener("click", (e) => {
+    if (e.target === modal) {
+      modal.classList.add("hidden");
+    }
+  });
+</script>
 
 
 </body>
