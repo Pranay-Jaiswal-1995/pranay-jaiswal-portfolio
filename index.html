@@ -13,7 +13,7 @@
             background-color: #f0f2f5; /* Light gray background */
             color: #333;
             /* Add padding to the top of the body to prevent content from being hidden behind the fixed header */
-            padding-top: 5.5rem; /* Adjusted based on new header height */
+            padding-top: 6rem; /* Adjusted based on new header height */
         }
         .container {
             max-width: 1200px;
@@ -69,28 +69,48 @@
             background-color: #4338ca; /* Darker background on hover */
             opacity: 1;
         }
+
+        /* Styles for the loading indicator */
+        .loader {
+            border: 4px solid #f3f3f3; /* Light grey */
+            border-top: 4px solid #4f46e5; /* Blue */
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            animation: spin 2s linear infinite;
+            display: inline-block;
+            margin-left: 10px;
+            vertical-align: middle;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
     </style>
 </head>
 <body class="antialiased">
 
-    <!-- Header Section - Adjusted padding for smaller height -->
-    <header class="bg-indigo-600 text-white py-3 shadow-lg fixed top-0 w-full z-50">
+    <!-- Header Section - Adjusted padding for shorter height -->
+    <header class="bg-indigo-600 text-white py-2 shadow-lg fixed top-0 w-full z-50">
         <div class="container flex flex-col md:flex-row justify-between items-center">
             <div class="flex items-center mb-4 md:mb-0">
                 <!-- Profile Image updated size -->
                 <img src="https://ca.slack-edge.com/T02C9K3DS-U055R2DGC8M-5582873639ff-512"
                      alt="Pranay Jaiswal Profile"
-                     class="w-16 h-16 rounded-xl mr-3 border-2 border-white object-cover flex-shrink-0"
-                     onerror="this.onerror=null; this.src='https://placehold.co/64x64/cccccc/000000?text=PJ';">
-                <h1 class="text-4xl font-bold">Pranay Jaiswal</h1>
+                     class="w-20 h-20 rounded-xl mr-3 border-2 border-white object-cover flex-shrink-0"
+                     onerror="this.onerror=null; this.src='https://placehold.co/80x80/cccccc/000000?text=PJ';">
+                <!-- Name text as a clickable element to reload page -->
+                <a href="#" onclick="location.reload()" class="text-3xl font-bold text-white no-underline hover:underline cursor-pointer">Pranay Jaiswal</a>
             </div>
             <nav>
                 <ul class="flex space-x-6">
-                    <li><a href="#about" class="hover:underline text-lg">About</a></li>
-                    <li><a href="#experience" class="hover:underline text-lg">Experience</a></li>
-                    <li><a href="#skills" class="hover:underline text-lg">Skills</a></li>
-                    <li><a href="#projects" class="hover:underline text-lg">Projects</a></li>
-                    <li><a href="#contact" class="hover:underline text-lg">Contact</a></li>
+                    <!-- Removed hover:underline from navigation links -->
+                    <li><a href="#about" class="text-lg">About</a></li>
+                    <li><a href="#experience" class="text-lg">Experience</a></li>
+                    <li><a href="#skills" class="text-lg">Skills</a></li>
+                    <li><a href="#projects" class="text-lg">Projects</a></li>
+                    <li><a href="#contact" class="text-lg">Contact</a></li>
                 </ul>
             </nav>
         </div>
@@ -105,8 +125,8 @@
         </div>
     </section>
 
-    <!-- About Section -->
-    <section id="about" class="py-16">
+    <!-- About Section - Added scroll-mt-[6rem] -->
+    <section id="about" class="py-16 scroll-mt-[6rem]">
         <div class="container">
             <h2 class="section-title">About Me</h2>
             <div class="card">
@@ -117,8 +137,8 @@
         </div>
     </section>
 
-    <!-- Experience Section -->
-    <section id="experience" class="bg-gray-100 py-16">
+    <!-- Experience Section - Added scroll-mt-[6rem] -->
+    <section id="experience" class="bg-gray-100 py-16 scroll-mt-[6rem]">
         <div class="container">
             <h2 class="section-title">Experience</h2>
 
@@ -187,8 +207,8 @@
         </div>
     </section>
 
-    <!-- Skills Section -->
-    <section id="skills" class="py-16">
+    <!-- Skills Section - Added scroll-mt-[6rem] -->
+    <section id="skills" class="py-16 scroll-mt-[6rem]">
         <div class="container">
             <h2 class="section-title">Skills</h2>
             <div class="card">
@@ -254,70 +274,39 @@
         </div>
     </section>
 
-    <!-- Projects Section -->
-    <section id="projects" class="bg-gray-100 py-16">
+    <!-- Projects Section - Added scroll-mt-[6rem] -->
+    <section id="projects" class="bg-gray-100 py-16 scroll-mt-[6rem]">
         <div class="container">
             <h2 class="section-title">Projects</h2>
 
-            <div class="card">
-                <h3 class="text-2xl font-semibold text-indigo-700">QA Automation (WebPT)</h3>
-                <p class="text-gray-600 mb-2">Status: COMPLETED</p>
-                <ul class="list-disc list-inside text-lg space-y-1">
-                    <li>Developed a system to streamline data input for audits, including case details and feedback, replacing inefficient manual processes.</li>
-                    <li>Improved efficiency and accuracy in audit and feedback sharing, saving significant time and reducing errors, thereby enhancing team productivity and QA effort.</li>
-                </ul>
-            </div>
+            <!-- Project Card Template with Gemini API Integration -->
+            <template id="project-card-template">
+                <div class="card project-card" data-project-title="" data-project-description="">
+                    <h3 class="text-2xl font-semibold text-indigo-700 project-title"></h3>
+                    <p class="text-gray-600 mb-2 project-status"></p>
+                    <ul class="list-disc list-inside text-lg space-y-1 project-description">
+                    </ul>
+                    <button class="btn-primary mt-4 generate-insights-btn">
+                        ✨ Generate Insights
+                        <span class="loader hidden"></span>
+                    </button>
+                    <div class="insights-container mt-4 hidden">
+                        <h4 class="font-semibold text-xl mb-2 text-indigo-700">Key Learnings:</h4>
+                        <p class="text-lg leading-relaxed mb-4 key-learnings"></p>
+                        <h4 class="font-semibold text-xl mb-2 text-indigo-700">Impact & Metrics:</h4>
+                        <p class="text-lg leading-relaxed impact-metrics"></p>
+                    </div>
+                </div>
+            </template>
 
-            <div class="card">
-                <h3 class="text-2xl font-semibold text-indigo-700">Updates Tracker/Website (WebPT)</h3>
-                <p class="text-gray-600 mb-2">Status: COMPLETED</p>
-                <ul class="list-disc list-inside text-lg space-y-1">
-                    <li>Centralized and automated the update-sharing process, addressing the lack of a streamlined method for documenting team updates.</li>
-                    <li>Significantly improved workflow efficiency, communication, and documentation accuracy, enhancing team productivity and collaboration.</li>
-                </ul>
-            </div>
+            <!-- Projects will be dynamically loaded here -->
+            <div id="projects-list"></div>
 
-            <div class="card">
-                <h3 class="text-2xl font-semibold text-indigo-700">Soft-skills Course (WebPT)</h3>
-                <p class="text-gray-600 mb-2">Status: COMPLETED</p>
-                <ul class="list-disc list-inside text-lg space-y-1">
-                    <li>Created and delivered an interactive soft skills training session with various activities, addressing a gap in dedicated soft skills training.</li>
-                    <li>Elevated the team's customer service skills, improved customer satisfaction (reflected in higher CSAT scores), and provided more growth opportunities for team members.</li>
-                </ul>
-            </div>
-
-            <div class="card">
-                <h3 class="text-2xl font-semibold text-indigo-700">Attendance Tracking System (WebPT)</h3>
-                <p class="text-gray-600 mb-2">Status: COMPLETED</p>
-                <ul class="list-disc list-inside text-lg space-y-1">
-                    <li>Developed a system for team leaders to mark daily attendance, automating calculations for days present, types of leaves (planned, unplanned, half-days, site-offs), and monthly shrinkage.</li>
-                    <li>Significantly reduced the administrative burden of attendance and leave management, enabling accurate tracking and reporting for better resource allocation and improved productivity.</li>
-                    <li>Integrated with a Leave Tracker website, highlighting available and full leave dates for agents.</li>
-                </ul>
-            </div>
-
-            <div class="card">
-                <h3 class="text-2xl font-semibold text-indigo-700">Knowledge Check (WebPT)</h3>
-                <p class="text-gray-600 mb-2">Status: COMPLETED</p>
-                <ul class="list-disc list-inside text-lg space-y-1">
-                    <li>Implemented a daily question initiative in a dedicated Slack channel to encourage team engagement and knowledge testing.</li>
-                    <li>Fostered a culture of continuous learning and knowledge sharing, challenging team members to stay informed and collectively enhance their expertise.</li>
-                </ul>
-            </div>
-
-            <div class="card">
-                <h3 class="text-2xl font-semibold text-indigo-700">Comprehensive Training for Bottom Performers (WebPT)</h3>
-                <p class="text-gray-600 mb-2">Status: COMPLETED</p>
-                <ul class="list-disc list-inside text-lg space-y-1">
-                    <li>Initiated a weekly training and shadowing program focusing on individual bottom performers to improve their workflow efficiency, communication skills, and problem-solving abilities.</li>
-                    <li>Aim to elevate individual performance through tailored support and guidance, contributing to the team's overall success.</li>
-                </ul>
-            </div>
         </div>
     </section>
 
-    <!-- Contact Section -->
-    <section id="contact" class="py-16">
+    <!-- Contact Section - Added scroll-mt-[6rem] -->
+    <section id="contact" class="py-16 scroll-mt-[6rem]">
         <div class="container text-center">
             <h2 class="section-title">Get in Touch</h2>
             <div class="card max-w-xl mx-auto">
@@ -338,9 +327,9 @@
         </svg>
     </button>
 
-    <!-- JavaScript for Scroll to Top Button functionality -->
+    <!-- JavaScript for Scroll to Top Button functionality and Gemini API integration -->
     <script>
-        // Get the button
+        // Get the scroll-to-top button
         let mybutton = document.getElementById("scrollToTopBtn");
 
         // When the user scrolls down 20px from the top of the document, show the button
@@ -360,6 +349,179 @@
                 top: 0,
                 behavior: 'smooth' // Smooth scroll
             });
+        });
+
+        // Gemini API Integration for Project Insights
+        document.addEventListener('DOMContentLoaded', function() {
+            const projectsData = [
+                {
+                    title: "QA Automation (WebPT)",
+                    status: "COMPLETED",
+                    description: [
+                        "Developed a system to streamline data input for audits, including case details and feedback, replacing inefficient manual processes.",
+                        "Improved efficiency and accuracy in audit and feedback sharing, saving significant time and reducing errors, thereby enhancing team productivity and QA effort."
+                    ]
+                },
+                {
+                    title: "Updates Tracker/Website (WebPT)",
+                    status: "COMPLETED",
+                    description: [
+                        "Centralized and automated the update-sharing process, addressing the lack of a streamlined method for documenting team updates.",
+                        "Significantly improved workflow efficiency, communication, and documentation accuracy, enhancing team productivity and collaboration."
+                    ]
+                },
+                {
+                    title: "Soft-skills Course (WebPT)",
+                    status: "COMPLETED",
+                    description: [
+                        "Created and delivered an interactive soft skills training session with various activities, addressing a gap in dedicated soft skills training.",
+                        "Elevated the team's customer service skills, improved customer satisfaction (reflected in higher CSAT scores), and provided more growth opportunities for team members."
+                    ]
+                },
+                {
+                    title: "Attendance Tracking System (WebPT)",
+                    status: "COMPLETED",
+                    description: [
+                        "Developed a system for team leaders to mark daily attendance, automating calculations for days present, types of leaves (planned, unplanned, half-days, site-offs), and monthly shrinkage.",
+                        "Significantly reduced the administrative burden of attendance and leave management, enabling accurate tracking and reporting for better resource allocation and improved productivity.",
+                        "Integrated with a Leave Tracker website, highlighting available and full leave dates for agents."
+                    ]
+                },
+                {
+                    title: "Knowledge Check (WebPT)",
+                    status: "COMPLETED",
+                    description: [
+                        "Implemented a daily question initiative in a dedicated Slack channel to encourage team engagement and knowledge testing.",
+                        "Fostered a culture of continuous learning and knowledge sharing, challenging team members to stay informed and collectively enhance their expertise."
+                    ]
+                },
+                {
+                    title: "Comprehensive Training for Bottom Performers (WebPT)",
+                    status: "COMPLETED",
+                    description: [
+                        "Initiated a weekly training and shadowing program focusing on individual bottom performers to improve their workflow efficiency, communication skills, and problem-solving abilities.",
+                        "Aim to elevate individual performance through tailored support and guidance, contributing to the team's overall success."
+                    ]
+                }
+            ];
+
+            const projectsListContainer = document.getElementById('projects-list');
+            const projectCardTemplate = document.getElementById('project-card-template');
+
+            // Function to render projects
+            function renderProjects() {
+                projectsListContainer.innerHTML = ''; // Clear existing projects
+                projectsData.forEach(project => {
+                    const clone = document.importNode(projectCardTemplate.content, true);
+                    const card = clone.querySelector('.project-card');
+                    card.querySelector('.project-title').textContent = project.title;
+                    card.querySelector('.project-status').textContent = `Status: ${project.status}`;
+
+                    const descriptionList = card.querySelector('.project-description');
+                    project.description.forEach(item => {
+                        const li = document.createElement('li');
+                        li.textContent = item;
+                        descriptionList.appendChild(li);
+                    });
+
+                    // Set data attributes for easier access in JS
+                    card.setAttribute('data-project-title', project.title);
+                    card.setAttribute('data-project-description', project.description.join('\n'));
+
+                    projectsListContainer.appendChild(clone);
+                });
+
+                // Attach event listeners to all "Generate Insights" buttons
+                document.querySelectorAll('.generate-insights-btn').forEach(button => {
+                    button.addEventListener('click', generateProjectInsights);
+                });
+            }
+
+            // Initial render of projects
+            renderProjects();
+
+            async function generateProjectInsights(event) {
+                const button = event.target;
+                const card = button.closest('.project-card');
+                const projectTitle = card.getAttribute('data-project-title');
+                const projectDescription = card.getAttribute('data-project-description');
+                const insightsContainer = card.querySelector('.insights-container');
+                const keyLearningsElement = card.querySelector('.key-learnings');
+                const impactMetricsElement = card.querySelector('.impact-metrics');
+                const loader = button.querySelector('.loader');
+
+                // Show loader and hide insights if already visible
+                loader.classList.remove('hidden');
+                insightsContainer.classList.add('hidden');
+                keyLearningsElement.textContent = '';
+                impactMetricsElement.textContent = '';
+                button.disabled = true; // Disable button during API call
+
+                const prompt = `Given the following project:
+Title: ${projectTitle}
+Description: ${projectDescription}
+
+Please generate two sections:
+1.  **Key Learnings:** What were the main takeaways or skills developed from this project?
+2.  **Impact & Metrics:** How did this project benefit the organization or process? Quantify if possible based on the description.
+
+Format the response as a JSON object with two keys: "keyLearnings" (string) and "impactMetrics" (string).`;
+
+                let chatHistory = [];
+                chatHistory.push({ role: "user", parts: [{ text: prompt }] });
+
+                const payload = {
+                    contents: chatHistory,
+                    generationConfig: {
+                        responseMimeType: "application/json",
+                        responseSchema: {
+                            type: "OBJECT",
+                            properties: {
+                                "keyLearnings": { "type": "STRING" },
+                                "impactMetrics": { "type": "STRING" }
+                            },
+                            "propertyOrdering": ["keyLearnings", "impactMetrics"]
+                        }
+                    }
+                };
+
+                const apiKey = ""; // Leave this empty, Canvas will provide it at runtime
+                const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
+
+                try {
+                    const response = await fetch(apiUrl, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(payload)
+                    });
+
+                    const result = await response.json();
+
+                    if (result.candidates && result.candidates.length > 0 &&
+                        result.candidates[0].content && result.candidates[0].content.parts &&
+                        result.candidates[0].content.parts.length > 0) {
+                        const json = result.candidates[0].content.parts[0].text;
+                        const parsedJson = JSON.parse(json);
+
+                        keyLearningsElement.textContent = parsedJson.keyLearnings;
+                        impactMetricsElement.textContent = parsedJson.impactMetrics;
+                        insightsContainer.classList.remove('hidden'); // Show insights
+                    } else {
+                        keyLearningsElement.textContent = 'Could not generate insights. Please try again.';
+                        impactMetricsElement.textContent = '';
+                        insightsContainer.classList.remove('hidden');
+                        console.error('Unexpected API response structure:', result);
+                    }
+                } catch (error) {
+                    keyLearningsElement.textContent = 'Error generating insights. Please check your network connection or try again later.';
+                    impactMetricsElement.textContent = '';
+                    insightsContainer.classList.remove('hidden');
+                    console.error('Error fetching from Gemini API:', error);
+                } finally {
+                    loader.classList.add('hidden'); // Hide loader
+                    button.disabled = false; // Re-enable button
+                }
+            }
         });
     </script>
 
