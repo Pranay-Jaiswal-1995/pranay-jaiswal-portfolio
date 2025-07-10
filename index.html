@@ -104,20 +104,36 @@ a.bg-indigo-600:focus, a.bg-green-600:focus {
     </div>
   </header>
 <!-- Profile Modal -->
-<div id="profileModal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50">
-  <div class="bg-white rounded-lg shadow-xl max-w-sm w-full p-6 relative">
-    <button id="closeModal" class="absolute top-3 right-3 text-gray-500 hover:text-gray-700">
-      &times;
-    </button>
-    <h2 class="text-2xl font-bold text-indigo-700 mb-4">Pranay Jaiswal</h2>
-    <p class="text-gray-700 mb-2"><strong>Phone:</strong> (+91) 8766708714</p>
-    <p class="text-gray-700 mb-2"><strong>Email:</strong> pranay.jaiswal.1995@gmail.com</p>
-    <p class="text-gray-700 mb-2"><strong>Address:</strong> Hyderabad, Telangana</p>
-    <p class="text-gray-700 mb-2"><strong>Education:</strong> B.Tech/BE in Computer Science & Engineering</p>
-    <p class="text-gray-700 mb-2"><strong>Experience:</strong> ~6+ years total</p>
-    <p class="text-gray-700">✅ Team Leadership<br>✅ QA & CSAT Improvement<br>✅ Process Improvement<br>✅ Coaching & Mentoring</p>
+<div class="bg-white rounded-xl shadow-xl max-w-xs mx-auto p-6 text-center">
+  <!-- Profile Image -->
+  <img
+    src="https://ca.slack-edge.com/T02C9K3DS-U055R2DGC8M-5582873639ff-512"
+    alt="Pranay Jaiswal Profile"
+    class="w-24 h-24 rounded-full mx-auto mb-4 border-4 border-indigo-500 object-cover"
+    onerror="this.onerror=null; this.src='https://placehold.co/100x100/cccccc/000000?text=PJ';"
+  />
+
+  <!-- Name -->
+  <h3 class="text-2xl font-bold text-indigo-700 mb-2">Pranay Jaiswal</h3>
+
+  <!-- Role or Short Intro -->
+  <p class="text-gray-600 mb-4">Experienced Team Lead | Customer Support Specialist</p>
+
+  <!-- Contact Details -->
+  <div class="text-gray-700 text-sm mb-4 space-y-1">
+    <p><strong>📍 Address:</strong> Hyderabad, TS</p>
+    <p><strong>📞 Phone:</strong> (+91) 8766708714</p>
+    <p><strong>✉️ Email:</strong> <a href="mailto:pranay.jaiswal.1995@gmail.com" class="text-indigo-600 hover:underline">pranay.jaiswal.1995@gmail.com</a></p>
   </div>
+
+  <!-- Call to Action Button -->
+  <a
+    href="#contact"
+    class="bg-yellow-500 hover:bg-yellow-600 text-white font-semibold py-2 px-4 rounded-lg shadow-md transition-all duration-300 inline-block">
+    📞 Get in Touch
+  </a>
 </div>
+
 
   <!-- HERO -->
   <section id="home" class="bg-gradient-to-r from-indigo-500 to-purple-600 text-white py-28 md:py-36 text-center">
