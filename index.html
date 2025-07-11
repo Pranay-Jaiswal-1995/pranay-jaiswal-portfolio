@@ -7,49 +7,68 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
   <style>
-    body {
-      font-family: 'Inter', sans-serif;
-      background-color: #f0f2f5;
-      color: #333;
-      padding-top: 6rem;
+  body {
+    font-family: 'Inter', sans-serif;
+    background-color: #f7f8fc;
+    color: #333;
+    padding-top: 6rem;
+  }
+
+  section {
+    scroll-margin-top: 6rem;
+  }
+
+  h2 {
+    font-weight: 700;
+  }
+
+  #scrollToTopBtn {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 99;
+    background-color: #6366f1;
+    color: white;
+    cursor: pointer;
+    padding: 15px;
+    border-radius: 50%;
+    font-size: 1.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
+    opacity: 0.85;
+    transition: background-color 0.3s, opacity 0.3s;
+  }
+
+  #scrollToTopBtn:hover {
+    background-color: #4f46e5;
+    opacity: 1;
+  }
+
+  #profileModal {
+    backdrop-filter: blur(4px);
+    transition: opacity 0.3s ease;
+  }
+
+  #profileModal .bg-white {
+    animation: modalFade 0.3s ease;
+  }
+
+  @keyframes modalFade {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
     }
-    #scrollToTopBtn {
-      display: none;
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      z-index: 99;
-      background-color: #4f46e5;
-      color: white;
-      cursor: pointer;
-      padding: 15px;
-      border-radius: 50%;
-      font-size: 1.5rem;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-      opacity: 0.8;
-      transition: background-color 0.3s, opacity 0.3s;
-    }
-    #scrollToTopBtn:hover {
-      background-color: #4338ca;
+    to {
       opacity: 1;
+      transform: translateY(0);
     }
-    #profileModal {
-      backdrop-filter: blur(4px);
-      transition: opacity 0.3s ease;
-    }
-    #profileModal .bg-white {
-      animation: modalFade 0.3s ease;
-    }
-    @keyframes modalFade {
-      from { opacity: 0; transform: translateY(-10px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-  </style>
+  }
+</style>
 </head>
 <body class="antialiased">
 
   <!-- HEADER -->
-  <header class="bg-indigo-600 text-white py-2 shadow-lg fixed top-0 w-full z-50">
+  <header class="bg-gradient-to-r from-indigo-500 to-violet-600 text-white py-4 shadow-md fixed top-0 w-full z-50">
     <div class="container mx-auto px-4 flex flex-col md:flex-row justify-between items-center relative">
       <div id="profileTrigger" class="flex items-center mb-4 md:mb-0 cursor-pointer hover:opacity-90 transition">
         <img src="https://ca.slack-edge.com/T02C9K3DS-U055R2DGC8M-5582873639ff-512"
@@ -108,7 +127,7 @@
     </div>
   </div>
     <!-- HERO -->
-  <section id="home" class="bg-gradient-to-r from-indigo-500 to-purple-600 text-white py-28 md:py-36 text-center">
+  <section id="home" class="bg-gradient-to-r from-indigo-400 to-violet-500 text-white py-32 md:py-40 text-center">
     <div class="container mx-auto px-2">
       <h2 class="text-5xl font-extrabold mb-4">Experienced Team Lead | Customer Support & Operations Specialist</h2>
       <p class="text-xl mb-8 max-w-2xl mx-auto">Empowering teams, driving performance, and ensuring exceptional customer experiences through leadership, mentoring, and process excellence.</p>
@@ -118,9 +137,9 @@
 
   <!-- ABOUT -->
   <section id="about" class="py-16 bg-white scroll-mt-[6rem]">
-    <div class="container mx-auto px-4 max-w-3xl text-center">
+    <div class="container mx-auto px-6 md:px-8 max-w-4xl text-center">
       <h2 class="text-4xl font-bold mb-6">About Me</h2>
-      <div class="bg-white rounded-xl shadow-md p-6 text-lg leading-relaxed">
+      <div class="bg-white rounded-2xl shadow-lg p-10 md:p-12 text-lg leading-relaxed space-y-6">
         <p class="mb-4">Experienced Operations Team Lead with 7+ years in technical support, training, and quality management within the SaaS, PaaS, E-commerce and EMR industry. Proven track record of leading high-performing teams to exceed key KPIs, including CSAT, QA adherence, and FCR. Skilled in coaching and mentoring, training program design, and process improvement to drive consistent, high-quality service delivery.</p>
         <p class="mb-4">Expert in conducting training needs analyses, developing effective learning content, and delivering impactful onboarding, upskill, and refresher programs. Adept at reducing escalations and resolution times through targeted coaching, root-cause analysis, and workflow optimization.</p>
         <p class="mt-4">Known for strong stakeholder management, cross-functional collaboration, and a data-driven approach to problem-solving. Committed to fostering a culture of continuous learning, employee engagement, and accountability. Passionate about empowering teams to deliver exceptional customer experiences while meeting organizational goals.</p>
@@ -256,8 +275,8 @@
 <section id="skills" class="bg-gray-100 py-16 scroll-mt-[6rem]">
   <div class="container mx-auto px-4">
     <h2 class="text-4xl font-bold text-center mb-6">Skills</h2>
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
-      <div class="bg-white rounded-xl shadow-md p-6">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto px-4 md:px-8">
+      <div class="bg-white rounded-2xl shadow-lg p-8 hover:shadow-xl transition duration-300">
         <h3 class="text-xl font-semibold mb-3 text-indigo-700">Leadership & Management</h3>
         <ul class="list-disc list-inside space-y-2 text-lg">
           <li>Team Leadership, Performance Management, Conflict Resolution, Coaching & Mentoring</li>
@@ -268,7 +287,7 @@
           <li>Employee engagement and retention strategies</li>
         </ul>
       </div>
-      <div class="bg-white rounded-xl shadow-md p-6">
+      <div class="bg-white rounded-2xl shadow-lg p-8 hover:shadow-xl transition duration-300">
         <h3 class="text-xl font-semibold mb-3 text-indigo-700">Operational Excellence</h3>
         <ul class="list-disc list-inside space-y-2 text-lg">
           <li>Workflow Optimization, Process Improvement</li>
@@ -278,7 +297,7 @@
           <li>Escalation management and root cause analysis</li>
         </ul>
       </div>
-      <div class="bg-white rounded-xl shadow-md p-6">
+      <div class="bg-white rounded-2xl shadow-lg p-8 hover:shadow-xl transition duration-300">
         <h3 class="text-xl font-semibold mb-3 text-indigo-700">Professional & Personal</h3>
         <ul class="list-disc list-inside space-y-2 text-lg">
           <li>Self-motivation and discipline</li>
@@ -289,7 +308,7 @@
           <li>Continuous learner with a growth mindset</li>
         </ul>
       </div>
-       <div class="bg-white rounded-xl shadow-md p-6">
+       <div class="bg-white rounded-2xl shadow-lg p-8 hover:shadow-xl transition duration-300">
         <h3 class="text-xl font-semibold mb-3 text-indigo-700">Training & Development</h3>
         <ul class="list-disc list-inside space-y-2 text-lg">
           <li>Training Needs Analysis, Content Design, Curriculum Development</li>
@@ -298,7 +317,7 @@
           <li>Assessing training effectiveness through surveys, assessments, and QA</li>
         </ul>
       </div>
-         <div class="bg-white rounded-xl shadow-md p-6">
+         <div class="bg-white rounded-2xl shadow-lg p-8 hover:shadow-xl transition duration-300">
         <h3 class="text-xl font-semibold mb-3 text-indigo-700">Communication & Collaboration</h3>
         <ul class="list-disc list-inside space-y-2 text-lg">
           <li>Stakeholder management</li>
@@ -307,7 +326,7 @@
           <li>Conducting daily huddles, newsletters, knowledge checks</li>
         </ul>
       </div>
-               <div class="bg-white rounded-xl shadow-md p-6">
+        <div class="bg-white rounded-2xl shadow-lg p-8 hover:shadow-xl transition duration-300">
         <h3 class="text-xl font-semibold mb-3 text-indigo-700">Technical & Analytical Skills</h3>
         <ul class="list-disc list-inside space-y-2 text-lg">
           <li>Data analysis to identify gaps and opportunities</li>
@@ -324,9 +343,9 @@
 <section id="projects" class="py-16 bg-white scroll-mt-[6rem]">
   <div class="container mx-auto px-4">
     <h2 class="text-4xl font-bold text-center mb-6">Projects</h2>
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto px-4 md:px-8">
 
-      <div class="bg-gray-50 rounded-xl shadow-md p-6">
+      <div class="bg-white rounded-2xl shadow-lg p-8 hover:shadow-xl transition duration-300">
         <h3 class="text-2xl font-semibold text-indigo-700 mb-2">QA Automation (WebPT)</h3>
         <p class="text-gray-700 mb-4">Status: COMPLETED</p>
         <p class="text-lg leading-relaxed">Identified inefficiencies in the Training and QA team’s manual audit process, which led to errors and wasted time.</p>
@@ -335,7 +354,7 @@
         <p class="text-lg leading-relaxed">Developed and implemented a system to automate QA audit data input, reducing manual errors by 90% and saving 40+ hours/month. Improved reporting consistency and enhanced analyst productivity significantly.</p>
       </div>
 
-      <div class="bg-gray-50 rounded-xl shadow-md p-6">
+      <div class="bg-white rounded-2xl shadow-lg p-8 hover:shadow-xl transition duration-300">
         <h3 class="text-2xl font-semibold text-indigo-700 mb-2">Updates Tracker/Website (WebPT)</h3>
         <p class="text-gray-700 mb-4">Status: COMPLETED</p>
         <p class="text-lg leading-relaxed">Identified fragmented communication as a barrier to knowledge sharing.</p>
@@ -344,7 +363,7 @@
         <p class="text-lg leading-relaxed">Designed and deployed a central website to track team updates, new process changes, and knowledge articles, ensuring better transparency and reducing missed communication during shifts.</p>
       </div>
 
-      <div class="bg-gray-50 rounded-xl shadow-md p-6">
+      <div class="bg-white rounded-2xl shadow-lg p-8 hover:shadow-xl transition duration-300">
         <h3 class="text-2xl font-semibold text-indigo-700 mb-2">Soft-skills Course (WebPT)</h3>
         <p class="text-gray-700 mb-4">Status: COMPLETED</p>
         <p class="text-lg leading-relaxed">Recognized a gap in customer service soft skills across the team.</p>
@@ -354,7 +373,7 @@
         <p class="text-lg leading-relaxed">Created and delivered an interactive soft-skills training program covering empathy, communication, and conflict management, resulting in a 15% boost in CSAT scores and reduced escalations.</p>
       </div>
 
-      <div class="bg-gray-50 rounded-xl shadow-md p-6">
+      <div class="bg-white rounded-2xl shadow-lg p-8 hover:shadow-xl transition duration-300">
         <h3 class="text-2xl font-semibold text-indigo-700 mb-2">Attendance Tracking System (WebPT)</h3>
         <p class="text-gray-700 mb-4">Status: COMPLETED</p>
         <p class="text-lg leading-relaxed">Created a user-friendly attendance sheet with automated calculations for present days, leave types (planned/unplanned), half-days, site-offs, and monthly shrinkage.</p>
@@ -362,7 +381,7 @@
         <p class="text-lg leading-relaxed">Built an automated system for tracking daily attendance and leave requests, visualizing leave availability with traffic-light color coding. Improved shift planning accuracy and reduced manual errors.</p>
       </div>
 
-      <div class="bg-gray-50 rounded-xl shadow-md p-6">
+      <div class="bg-white rounded-2xl shadow-lg p-8 hover:shadow-xl transition duration-300">
         <h3 class="text-2xl font-semibold text-indigo-700 mb-2">Knowledge Check (WebPT)</h3>
         <p class="text-gray-700 mb-4">Status: COMPLETED</p>
         <p class="text-lg leading-relaxed">Launched daily Slack-based knowledge questions to encourage continuous learning and teamwork.</p>
@@ -371,7 +390,7 @@
         <p class="text-lg leading-relaxed">Launched daily Slack questions to reinforce critical knowledge areas, fostering team collaboration and continuous learning. Helped reduce common errors by 20% over three months.</p>
       </div>
 
-      <div class="bg-gray-50 rounded-xl shadow-md p-6">
+      <div class="bg-white rounded-2xl shadow-lg p-8 hover:shadow-xl transition duration-300">
         <h3 class="text-2xl font-semibold text-indigo-700 mb-2">Comprehensive Training for Bottom Performers (WebPT)</h3>
         <p class="text-gray-700 mb-4">Status: COMPLETED</p>
         <p class="text-lg leading-relaxed">Identified agents struggling with performance metrics through QA scores and CSAT feedback.</p>
