@@ -71,13 +71,14 @@ a.bg-indigo-600:focus, a.bg-green-600:focus {
   <!-- HEADER -->
   <header class="bg-indigo-600 text-white py-2 shadow-lg fixed top-0 w-full z-50">
     <div class="container mx-auto px-4 flex flex-col md:flex-row justify-between items-center relative">
-      <div class="flex items-center mb-4 md:mb-0 relative">
-        <img id="profileImage" src="https://ca.slack-edge.com/T02C9K3DS-U055R2DGC8M-5582873639ff-512"
-     alt="Pranay Jaiswal Profile"
-     class="w-20 h-20 rounded-xl mr-3 border-2 border-white object-cover cursor-pointer hover:ring-4 hover:ring-indigo-300 transition-all duration-300"
-     onerror="this.onerror=null; this.src='https://placehold.co/80x80/cccccc/000000?text=PJ';">
-        <p class="text-3xl font-bold text-white no-underline cursor-pointer">Pranay Jaiswal</p>
-         </div>
+      <div id="profileTrigger" class="flex items-center mb-4 md:mb-0 relative cursor-pointer hover:opacity-90 transition">
+  <img src="https://ca.slack-edge.com/T02C9K3DS-U055R2DGC8M-5582873639ff-512"
+       alt="Pranay Jaiswal Profile"
+       class="w-20 h-20 rounded-xl mr-3 border-2 border-white object-cover"
+       onerror="this.onerror=null; this.src='https://placehold.co/80x80/cccccc/000000?text=PJ';">
+  <p class="text-3xl font-bold text-white">Pranay Jaiswal</p>
+</div>
+
       <nav>
         <ul class="flex space-x-6">
           <li><a href="https://pranay-jaiswal-1995.github.io/pranay-jaiswal-portfolio/" class="text-lg">Home</a></li>
@@ -378,13 +379,13 @@ a.bg-indigo-600:focus, a.bg-green-600:focus {
     });
 
   // Modal open/close logic
-  const profileImg = document.getElementById("profileImage");
+const profileTrigger = document.getElementById("profileTrigger");
   const modal = document.getElementById("profileModal");
   const closeModal = document.getElementById("closeModal");
 
-  profileImg.addEventListener("click", () => {
-    modal.classList.remove("hidden");
-    modal.classList.add("flex");
+profileTrigger.addEventListener("click", () => {
+  modal.classList.remove("hidden");
+  modal.classList.add("flex");
   });
 
   closeModal.addEventListener("click", () => {
