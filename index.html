@@ -409,6 +409,26 @@ profileTrigger.addEventListener("click", () => {
       modal.classList.add("hidden");
     }
   });
+    // Get in Touch button in hero section opens the modal
+const openProfileModalBtn = document.getElementById("openProfileModal");
+const modal = document.getElementById("profileModal");
+const closeModal = document.getElementById("closeModal");
+
+openProfileModalBtn.addEventListener("click", () => {
+  modal.classList.remove("hidden");
+  modal.classList.add("flex");
+});
+
+closeModal.addEventListener("click", () => {
+  modal.classList.add("hidden");
+});
+
+window.addEventListener("click", (e) => {
+  if (e.target === modal) {
+    modal.classList.add("hidden");
+  }
+});
+
 </script>
 
 
