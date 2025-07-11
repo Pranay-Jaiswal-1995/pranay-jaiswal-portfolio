@@ -13,9 +13,7 @@
       color: #333;
       padding-top: 6rem;
     }
-    .btn-primary {
-      @apply bg-indigo-600 text-white py-3 px-6 rounded-lg transition hover:bg-indigo-700;
-    }
+
     #scrollToTopBtn {
       display: none;
       position: fixed;
@@ -32,40 +30,31 @@
       opacity: 0.8;
       transition: background-color 0.3s, opacity 0.3s;
     }
+
     #scrollToTopBtn:hover {
       background-color: #4338ca;
       opacity: 1;
     }
+
     #profileModal {
-  backdrop-filter: blur(4px);
-  transition: opacity 0.3s ease;
-}
+      backdrop-filter: blur(4px);
+      transition: opacity 0.3s ease;
+    }
 
-#profileModal .bg-white {
-  animation: modalFade 0.3s ease;
-}
+    #profileModal .bg-white {
+      animation: modalFade 0.3s ease;
+    }
 
-@keyframes modalFade {
-  from {
-    opacity: 0;
-    transform: translateY(-10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-a.bg-indigo-600, a.bg-green-600 {
-  text-decoration: none;
-}
-
-a.bg-indigo-600:focus, a.bg-green-600:focus {
-  outline: 2px solid #4f46e5;
-  outline-offset: 2px;
-}
-  #profileModalContent {
-    max-width: 600px;
-  }
+    @keyframes modalFade {
+      from {
+        opacity: 0;
+        transform: translateY(-10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
   </style>
 </head>
 <body class="antialiased">
@@ -74,12 +63,12 @@ a.bg-indigo-600:focus, a.bg-green-600:focus {
   <header class="bg-indigo-600 text-white py-2 shadow-lg fixed top-0 w-full z-50">
     <div class="container mx-auto px-4 flex flex-col md:flex-row justify-between items-center relative">
       <div id="profileTrigger" class="flex items-center mb-4 md:mb-0 relative cursor-pointer hover:opacity-90 transition">
-  <img src="https://ca.slack-edge.com/T02C9K3DS-U055R2DGC8M-5582873639ff-512"
-       alt="Pranay Jaiswal Profile"
-       class="w-20 h-20 rounded-xl mr-3 border-2 border-white object-cover"
-       onerror="this.onerror=null; this.src='https://placehold.co/80x80/cccccc/000000?text=PJ';">
-  <p class="text-3xl font-bold text-white">Pranay Jaiswal</p>
-</div>
+        <img src="https://ca.slack-edge.com/T02C9K3DS-U055R2DGC8M-5582873639ff-512"
+             alt="Pranay Jaiswal Profile"
+             class="w-20 h-20 rounded-xl mr-3 border-2 border-white object-cover"
+             onerror="this.onerror=null; this.src='https://placehold.co/80x80/cccccc/000000?text=PJ';">
+        <p class="text-3xl font-bold text-white">Pranay Jaiswal</p>
+      </div>
 
       <nav>
         <ul class="flex space-x-6">
@@ -94,66 +83,60 @@ a.bg-indigo-600:focus, a.bg-green-600:focus {
       </nav>
     </div>
   </header>
-<!-- Profile Modal -->
-<div id="profileModal" class="hidden fixed inset-0 bg-black bg-opacity-50 justify-center items-center z-50">
-  <div id="profileModalContent" class="bg-white rounded-xl shadow-xl w-full mx-auto p-8 text-center relative">
-    <button id="closeModal" class="absolute top-2 right-2 text-gray-500 hover:text-gray-700 text-2xl">&times;</button>
-    
-    <!-- Profile Image -->
-    <img
-      src="https://ca.slack-edge.com/T02C9K3DS-U055R2DGC8M-5582873639ff-512"
-      alt="Pranay Jaiswal Profile"
-      class="w-24 h-24 rounded-full mx-auto mb-4 border-4 border-indigo-500 object-cover"
-      onerror="this.onerror=null; this.src='https://placehold.co/100x100/cccccc/000000?text=PJ';"
-    />
 
-    <!-- Name -->
-    <h3 class="text-2xl font-bold text-indigo-700 mb-2">Pranay Jaiswal</h3>
+  <!-- Profile Modal -->
+  <div id="profileModal" class="hidden fixed inset-0 bg-black bg-opacity-50 justify-center items-center z-50">
+    <div class="bg-white rounded-xl shadow-xl max-w-lg w-full mx-auto p-8 text-center relative">
+      <button id="closeModal" class="absolute top-2 right-2 text-gray-500 hover:text-gray-700 text-2xl">&times;</button>
+      
+      <img
+        src="https://ca.slack-edge.com/T02C9K3DS-U055R2DGC8M-5582873639ff-512"
+        alt="Pranay Jaiswal Profile"
+        class="w-24 h-24 rounded-full mx-auto mb-4 border-4 border-indigo-500 object-cover"
+        onerror="this.onerror=null; this.src='https://placehold.co/100x100/cccccc/000000?text=PJ';"
+      />
 
-    <!-- Role or Short Intro -->
-    <p class="text-gray-600 mb-4">Experienced Team Lead | Customer Support Specialist</p>
+      <h3 class="text-2xl font-bold text-indigo-700 mb-2">Pranay Jaiswal</h3>
+      <p class="text-gray-600 mb-4">Experienced Team Lead | Customer Support Specialist</p>
 
-    <!-- Contact Details -->
-    <div class="text-gray-700 text-sm mb-4 space-y-1">
-      <p><strong>📍 Address:</strong> Hyderabad, TS</p>
-      <p><strong>📞 Phone:</strong> (+91) 8766708714</p>
-      <p><strong>✉️ Email:</strong> <a href="mailto:pranay.jaiswal.1995@gmail.com" class="text-indigo-600 hover:underline">pranay.jaiswal.1995@gmail.com</a></p>
+      <div class="text-gray-700 text-sm mb-4 space-y-1">
+        <p><strong>📍 Address:</strong> Hyderabad, TS</p>
+        <p><strong>📞 Phone:</strong> (+91) 8766708714</p>
+        <p><strong>✉️ Email:</strong> <a href="mailto:pranay.jaiswal.1995@gmail.com" class="text-indigo-600 hover:underline">pranay.jaiswal.1995@gmail.com</a></p>
+      </div>
+
+      <div class="flex flex-col md:flex-row gap-4 mt-4">
+        <a
+          href="https://www.linkedin.com/in/pranay-jaiswal-4474952a7/"
+          target="_blank"
+          class="bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-2 px-4 rounded-md shadow transition duration-300 text-center"
+        >
+          🌐 View LinkedIn
+        </a>
+
+        <a
+          href="https://raw.githubusercontent.com/Pranay-Jaiswal-1995/pranay-jaiswal-portfolio/main/Pranay%20Jaiswal%20CV%20-%20June%202024%20(1).pdf"
+          target="_blank"
+          class="bg-green-600 hover:bg-green-700 text-white font-semibold py-2 px-4 rounded-md shadow transition duration-300 text-center"
+        >
+          📄 Download CV
+        </a>
+      </div>
     </div>
-
-<!-- Call to Action Buttons -->
-<div class="flex flex-col md:flex-row gap-4 mt-4">
-  <a
-    href="https://www.linkedin.com/in/pranay-jaiswal-4474952a7/"
-    target="_blank"
-    class="bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-2 px-4 rounded-md shadow transition duration-300 text-center"
-  >
-    🌐 View LinkedIn
-  </a>
-
-  <a
-    href="https://raw.githubusercontent.com/Pranay-Jaiswal-1995/pranay-jaiswal-portfolio/main/Pranay%20Jaiswal%20CV%20-%20June%202024%20(1).pdf"
-    target="_blank"
-    class="bg-green-600 hover:bg-green-700 text-white font-semibold py-2 px-4 rounded-md shadow transition duration-300 text-center"
-  >
-    📄 Download CV
-  </a>
-</div>
   </div>
-</div>
-
 
   <!-- HERO -->
   <section id="home" class="bg-gradient-to-r from-indigo-500 to-purple-600 text-white py-28 md:py-36 text-center">
     <div class="container mx-auto px-2">
       <h2 class="text-5xl font-extrabold mb-4">Experienced Team Lead | Customer Support & Operations Specialist</h2>
       <p class="text-xl mb-8 max-w-2xl mx-auto">Empowering teams, driving performance, and ensuring exceptional customer experiences through leadership, mentoring, and process excellence.</p>
-    <button id="openProfileModal" class="bg-yellow-500 hover:bg-yellow-600 text-white font-semibold py-3 px-6 rounded-lg shadow-lg transition-all duration-300 inline-block">
-  📞 Get in Touch
-</button>
-
+      <button id="openProfileModal" class="bg-yellow-500 hover:bg-yellow-600 text-white font-semibold py-3 px-6 rounded-lg shadow-lg transition-all duration-300 inline-block">
+        📞 Get in Touch
+      </button>
     </div>
   </section>
 
+  <!-- ... keep the rest of your ABOUT, EXPERIENCE, EDUCATION, SKILLS, PROJECTS, CONTACT, and FOOTER sections exactly as you have them ... -->
   <!-- ABOUT -->
   <section id="about" class="py-16 bg-white scroll-mt-[6rem]">
     <div class="container mx-auto px-4">
@@ -371,6 +354,8 @@ a.bg-indigo-600:focus, a.bg-green-600:focus {
       <p>&copy; 2025 Pranay Jaiswal. All rights reserved.</p>
     </div>
   </footer>
+
+  
   <!-- Scroll to Top Button -->
   <button id="scrollToTopBtn" title="Go to top" class="fixed bottom-6 right-6 bg-indigo-600 hover:bg-indigo-700 text-white rounded-full p-3 shadow-lg transition-opacity duration-300 opacity-80">
     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -379,60 +364,36 @@ a.bg-indigo-600:focus, a.bg-green-600:focus {
   </button>
 
   <script>
-    // Scroll to Top Button functionality
+    // Scroll to Top Button
     const scrollBtn = document.getElementById("scrollToTopBtn");
     window.addEventListener("scroll", () => {
-      if (window.scrollY > 200) {
-        scrollBtn.style.display = "block";
-      } else {
-        scrollBtn.style.display = "none";
-      }
+      scrollBtn.style.display = window.scrollY > 200 ? "block" : "none";
     });
     scrollBtn.addEventListener("click", () => {
       window.scrollTo({ top: 0, behavior: "smooth" });
     });
 
-  // Modal open/close logic
-const profileTrigger = document.getElementById("profileTrigger");
-  const modal = document.getElementById("profileModal");
-  const closeModal = document.getElementById("closeModal");
+    // Modal Logic
+    const modal = document.getElementById("profileModal");
+    const closeModal = document.getElementById("closeModal");
+    const triggers = [document.getElementById("profileTrigger"), document.getElementById("openProfileModal")];
 
-profileTrigger.addEventListener("click", () => {
-  modal.classList.remove("hidden");
-  modal.classList.add("flex");
-  });
+    triggers.forEach(trigger => {
+      trigger.addEventListener("click", () => {
+        modal.classList.remove("hidden");
+        modal.classList.add("flex");
+      });
+    });
 
-  closeModal.addEventListener("click", () => {
-    modal.classList.add("hidden");
-  });
-
-  window.addEventListener("click", (e) => {
-    if (e.target === modal) {
+    closeModal.addEventListener("click", () => {
       modal.classList.add("hidden");
-    }
-  });
-    // Get in Touch button in hero section opens the modal
-const openProfileModalBtn = document.getElementById("openProfileModal");
-const modal = document.getElementById("profileModal");
-const closeModal = document.getElementById("closeModal");
+    });
 
-openProfileModalBtn.addEventListener("click", () => {
-  modal.classList.remove("hidden");
-  modal.classList.add("flex");
-});
-
-closeModal.addEventListener("click", () => {
-  modal.classList.add("hidden");
-});
-
-window.addEventListener("click", (e) => {
-  if (e.target === modal) {
-    modal.classList.add("hidden");
-  }
-});
-
-</script>
-
-
+    window.addEventListener("click", (e) => {
+      if (e.target === modal) {
+        modal.classList.add("hidden");
+      }
+    });
+  </script>
 </body>
 </html>
