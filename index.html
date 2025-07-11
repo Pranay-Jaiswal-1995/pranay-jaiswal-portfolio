@@ -63,7 +63,9 @@ a.bg-indigo-600:focus, a.bg-green-600:focus {
   outline: 2px solid #4f46e5;
   outline-offset: 2px;
 }
-
+  #profileModalContent {
+    max-width: 600px;
+  }
   </style>
 </head>
 <body class="antialiased">
@@ -94,7 +96,7 @@ a.bg-indigo-600:focus, a.bg-green-600:focus {
   </header>
 <!-- Profile Modal -->
 <div id="profileModal" class="hidden fixed inset-0 bg-black bg-opacity-50 justify-center items-center z-50">
-  <div class="bg-white rounded-xl shadow-xl max-w-xs w-full mx-auto p-6 text-center relative">
+  <div id="profileModalContent" class="bg-white rounded-xl shadow-xl w-full mx-auto p-8 text-center relative">
     <button id="closeModal" class="absolute top-2 right-2 text-gray-500 hover:text-gray-700 text-2xl">&times;</button>
     
     <!-- Profile Image -->
