@@ -7,11 +7,16 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
   <style>
+    /* Global font size adjustment for "zoom out" effect */
+    html {
+      font-size: 80%; /* 20% smaller base font size, scales all rem units */
+    }
+
     body {
       font-family: 'Inter', sans-serif;
       background-color: #fcfcfc; /* Very light, almost white background */
       color: #333; /* Standard dark text */
-      padding-top: 6rem; /* Adjusted for header height */
+      padding-top: 6rem; /* Adjusted for header height, will scale with html font-size */
     }
 
     section {
@@ -110,8 +115,8 @@
     #scrollToTopBtn {
       display: none;
       position: fixed;
-      bottom: 20px;
-      right: 20px;
+      bottom: 1.25rem; /* Converted from 20px to rem */
+      right: 1.25rem; /* Converted from 20px to rem */
       z-index: 99;
       background-color: #4f46e5;
       color: white;
@@ -182,7 +187,8 @@
       <img src="https://ca.slack-edge.com/T02C9K3DS-U055R2DGC8M-5582873639ff-512"
            alt="Pranay Jaiswal Profile"
            class="w-24 h-24 rounded-full mx-auto mb-4 border-4 border-indigo-500 object-cover"
-           onerror="this.onerror=null; this.src='https://placehold.co/100x100/cccccc/000000?text=PJ';">
+           onerror="this.onerror=null; this.src='https://placehold.co/100x100/cccccc/000000?text=PJ';"
+           />
       <h3 class="text-2xl font-bold text-indigo-700 mb-2">Pranay Jaiswal</h3>
       <p class="text-gray-600 mb-4">Experienced Team Lead | Customer Support Specialist</p>
       <div class="text-gray-700 text-sm mb-4 space-y-1">
@@ -484,7 +490,7 @@
       <p class="text-lg mb-4">I'm always open to new opportunities and collaborations. Feel free to reach out!</p>
       <div class="card">
         <p class="text-lg mb-2"><strong>Phone:</strong> <a href="tel:+918766708714" class="text-indigo-600 hover:underline">(+91) 8766708714</a></p>
-        <p class="text-lg mb-4"><strong>Email:</strong> <a href="mailto:pranay.jaiswal.1995@gmail.com" class="text-indigo-600 hover:underline">pranay.jaiswal.1995@gmail.2000</a></p>
+        <p class="text-lg mb-4"><strong>Email:</strong> <a href="mailto:pranay.jaiswal.1995@gmail.com" class="text-indigo-600 hover:underline">pranay.jaiswal.1995@gmail.com</a></p>
         <p class="text-lg mb-4"><strong>Address:</strong> Hyderabad, Telangana</p>
         <div class="flex flex-col md:flex-row justify-center items-center gap-4 mt-4">
           <a href="https://www.linkedin.com/in/pranay-jaiswal-4474952a7/" target="_blank" class="bg-indigo-600 text-white font-semibold py-3 px-6 rounded-lg shadow-lg transition duration-300 w-full md:w-auto text-center hover:bg-indigo-700 hover:scale-105 transform">🌐 View LinkedIn</a>
