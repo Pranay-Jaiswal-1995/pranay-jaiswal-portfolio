@@ -9,92 +9,150 @@
   <style>
     body {
       font-family: 'Inter', sans-serif;
-      background-color: #f0f2f5; /* Merged from Code 1 */
-      color: #333;
-      padding-top: 6rem;
+      background-color: #fcfcfc; /* Very light, almost white background */
+      color: #333; /* Standard dark text */
+      padding-top: 6rem; /* Adjusted for header height */
     }
 
     section {
       scroll-margin-top: 6rem;
+      padding-top: 5rem; /* More generous section padding */
+      padding-bottom: 5rem;
     }
 
-    h2 {
-      font-weight: 700;
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding-left: 1.5rem; /* Consistent horizontal padding */
+        padding-right: 1.5rem;
     }
 
+    .section-title {
+        font-size: 2.75rem; /* Larger title for impact */
+        font-weight: 700;
+        color: #1a202c; /* Very dark gray for emphasis */
+        margin-bottom: 3rem; /* More space below titles */
+        text-align: center;
+        position: relative;
+        padding-bottom: 0.5rem;
+    }
+
+    .section-title::after {
+        content: '';
+        position: absolute;
+        left: 50%;
+        bottom: 0;
+        transform: translateX(-50%);
+        width: 60px; /* Short underline */
+        height: 4px;
+        background-color: #4f46e5; /* Indigo color */
+        border-radius: 2px;
+    }
+
+    .card {
+        background-color: #ffffff;
+        border-radius: 1.25rem; /* More rounded corners */
+        box-shadow: 0 15px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.08); /* Softer, larger shadow */
+        padding: 2.5rem; /* More internal padding */
+        margin-bottom: 2.5rem; /* More space between cards */
+        transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out; /* Smooth hover effect */
+    }
+
+    .card:hover {
+        transform: translateY(-8px); /* Lift effect on hover */
+        box-shadow: 0 20px 35px -8px rgba(0, 0, 0, 0.15), 0 10px 15px -8px rgba(0, 0, 0, 0.1);
+    }
+
+    .btn-primary {
+        background-color: #4f46e5; /* indigo-600 */
+        color: white;
+        padding: 1rem 2.25rem; /* Generous padding for buttons */
+        border-radius: 0.75rem; /* Larger rounded corners */
+        text-decoration: none;
+        font-weight: 600;
+        transition: background-color 0.3s ease, transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    .btn-primary:hover {
+        background-color: #4338ca; /* indigo-700 */
+        transform: translateY(-3px); /* Slight lift on hover */
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Specific styles for experience headings */
+    .experience-card-title {
+        font-size: 2.25rem; /* text-3xl */
+        font-weight: 700; /* font-bold */
+        color: #3730a3; /* Deeper indigo for strong visibility */
+        margin-bottom: 1rem; /* Space below the job title */
+        padding-bottom: 0.5rem; /* Small line below title */
+        border-bottom: 2px solid #e0e7ff; /* Light border for separation */
+    }
+
+    .experience-card-subtitle {
+        font-size: 1.125rem; /* text-lg */
+        color: #6c757d; /* Muted gray for location/duration */
+        margin-bottom: 1.5rem; /* More space below subtitle */
+    }
+
+    /* New style for individual job titles within experience cards */
+    .job-title-heading {
+        font-size: 1.5rem; /* Larger font for job titles */
+        font-weight: 700; /* Bolder */
+        color: #1a202c; /* Darker color for prominence */
+        margin-top: 1.5rem; /* More space above */
+        margin-bottom: 0.75rem; /* Space below */
+        border-bottom: 1px solid #e2e8f0; /* Subtle separator */
+        padding-bottom: 0.5rem;
+    }
+
+    /* Scroll to Top Button */
     #scrollToTopBtn {
       display: none;
       position: fixed;
       bottom: 20px;
       right: 20px;
       z-index: 99;
-      background-color: #4f46e5; /* Merged from Code 1 */
+      background-color: #4f46e5;
       color: white;
       cursor: pointer;
       padding: 15px;
       border-radius: 50%;
       font-size: 1.5rem;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Merged from Code 1 */
-      opacity: 0.8; /* Merged from Code 1 */
-      transition: background-color 0.3s, opacity 0.3s;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      opacity: 0.8;
+      transition: background-color 0.3s, opacity 0.3s, transform 0.2s ease-in-out;
     }
 
     #scrollToTopBtn:hover {
-      background-color: #4338ca; /* Merged from Code 1 */
+      background-color: #4338ca;
       opacity: 1;
+      transform: translateY(-3px);
     }
 
+    /* Modal Specific Styles */
     #profileModal {
-      backdrop-filter: blur(4px);
+      backdrop-filter: blur(10px); /* Even stronger blur */
+      background-color: rgba(0, 0, 0, 0.7); /* Darker overlay */
       transition: opacity 0.3s ease;
     }
 
     #profileModal .bg-white {
-      animation: modalFade 0.3s ease;
+      border-radius: 1.5rem; /* Even more rounded */
+      padding: 3rem; /* More padding */
+      animation: modalFade 0.4s ease-out; /* Slightly slower fade */
     }
 
     @keyframes modalFade {
-      from { opacity: 0; transform: translateY(-10px); }
+      from { opacity: 0; transform: translateY(-30px); }
       to { opacity: 1; transform: translateY(0); }
-    }
-
-    /* General styles from Code 1, ensuring consistency */
-    .container {
-        max-width: 1200px;
-        margin: 0 auto;
-        padding: 2rem;
-    }
-    .section-title {
-        font-size: 2.25rem; /* text-4xl */
-        font-weight: 700; /* font-bold */
-        color: #1a202c; /* gray-900 */
-        margin-bottom: 1.5rem; /* mb-6 */
-        text-align: center;
-    }
-    .card {
-        background-color: #ffffff;
-        border-radius: 0.75rem; /* rounded-xl */
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* shadow-md */
-        padding: 2rem;
-        margin-bottom: 2rem;
-    }
-    .btn-primary {
-        background-color: #4f46e5; /* indigo-600 */
-        color: white;
-        padding: 0.75rem 1.5rem; /* py-3 px-6 */
-        border-radius: 0.5rem; /* rounded-lg */
-        text-decoration: none;
-        transition: background-color 0.3s ease;
-    }
-    .btn-primary:hover {
-        background-color: #4338ca; /* indigo-700 */
     }
   </style>
 </head>
 <body class="antialiased">
 
   <!-- HEADER -->
-  <header class="bg-indigo-600 text-white py-2 shadow-lg fixed top-0 w-full z-50">
+  <header class="bg-indigo-700 text-white py-2 shadow-lg fixed top-0 w-full z-50">
     <div class="container mx-auto px-4 flex flex-col md:flex-row justify-between items-center relative">
       <div id="profileTrigger" class="flex items-center mb-4 md:mb-0 cursor-pointer hover:opacity-90 transition">
         <img src="https://ca.slack-edge.com/T02C9K3DS-U055R2DGC8M-5582873639ff-512"
@@ -105,13 +163,13 @@
       </div>
       <nav>
         <ul class="flex space-x-6">
-          <li><a href="https://pranay-jaiswal-1995.github.io/pranay-jaiswal-portfolio/" class="text-lg">Home</a></li>
-          <li><a href="#about" class="text-lg">About</a></li>
-          <li><a href="#experience" class="text-lg">Experience</a></li>
-          <li><a href="#education" class="text-lg">Education</a></li>
-          <li><a href="#skills" class="text-lg">Skills</a></li>
-          <li><a href="#projects" class="text-lg">Projects</a></li>
-          <li><a href="#contact" class="text-lg">Contact</a></li>
+          <li><a href="https://pranay-jaiswal-1995.github.io/pranay-jaiswal-portfolio/" class="text-lg hover:text-indigo-200 transition-colors duration-200">Home</a></li>
+          <li><a href="#about" class="text-lg hover:text-indigo-200 transition-colors duration-200">About</a></li>
+          <li><a href="#experience" class="text-lg hover:text-indigo-200 transition-colors duration-200">Experience</a></li>
+          <li><a href="#education" class="text-lg hover:text-indigo-200 transition-colors duration-200">Education</a></li>
+          <li><a href="#skills" class="text-lg hover:text-indigo-200 transition-colors duration-200">Skills</a></li>
+          <li><a href="#projects" class="text-lg hover:text-indigo-200 transition-colors duration-200">Projects</a></li>
+          <li><a href="#contact" class="text-lg hover:text-indigo-200 transition-colors duration-200">Contact</a></li>
         </ul>
       </nav>
     </div>
@@ -137,7 +195,7 @@
   <a
     href="https://www.linkedin.com/in/pranay-jaiswal-4474952a7/"
     target="_blank"
-    class="bg-indigo-600 w-40 md:w-40 hover:bg-indigo-700 text-white font-semibold py-2 px-4 rounded-md shadow transition duration-300 text-center w-full md:w-auto"
+    class="bg-indigo-600 w-40 md:w-40 text-white font-semibold py-2 px-4 rounded-md shadow transition duration-300 text-center w-full md:w-auto hover:bg-indigo-700 hover:scale-105 transform"
   >
     🌐 View LinkedIn
   </a>
@@ -145,7 +203,7 @@
   <a
     href="https://raw.githubusercontent.com/Pranay-Jaiswal-1995/pranay-jaiswal-portfolio/main/Pranay%20Jaiswal%20-%20Resume%20(2025).pdf"
     target="_blank"
-    class="bg-green-600 w-40 md:w-40 hover:bg-green-700 text-white font-semibold py-2 px-4 rounded-md shadow transition duration-300 text-center w-full md:w-auto"
+    class="bg-green-600 w-40 md:w-40 text-white font-semibold py-2 px-4 rounded-md shadow transition duration-300 text-center w-full md:w-auto hover:bg-green-700 hover:scale-105 transform"
   >
     📄 Download CV
   </a>
@@ -157,34 +215,34 @@
     <div class="container mx-auto px-2">
       <h2 class="text-5xl font-extrabold mb-4">Experienced Team Lead | Customer Support & Operations Specialist</h2>
       <p class="text-xl mb-8 max-w-2xl mx-auto">Empowering teams, driving performance, and ensuring exceptional customer experiences through leadership, mentoring, and process excellence.</p>
-      <button id="openProfileModal" class="bg-yellow-500 hover:bg-yellow-600 text-white font-semibold py-3 px-6 rounded-lg shadow-lg transition duration-300">📞 Get in Touch</button>
+      <button id="openProfileModal" class="bg-yellow-500 text-white font-semibold py-3 px-6 rounded-lg shadow-lg transition duration-300 hover:bg-yellow-600 hover:scale-105 transform">📞 Get in Touch</button>
     </div>
   </section>
 
   <!-- ABOUT -->
-  <section id="about" class="py-16 bg-white scroll-mt-[6rem]">
+  <section id="about" class="bg-white scroll-mt-[6rem]">
     <div class="container mx-auto px-4 max-w-3xl text-center">
-      <h2 class="text-4xl font-bold mb-6">About Me</h2>
-      <div class="bg-white rounded-xl shadow-md p-6 text-lg leading-relaxed">
-        <p class="mb-4">Experienced Operations Team Lead with 7+ years in technical support, training, and quality management within the SaaS, PaaS, E-commerce and EMR industry. Proven track record of leading high-performing teams to exceed key KPIs, including CSAT, QA adherence, and FCR. Skilled in coaching and mentoring, training program design, and process improvement to drive consistent, high-quality service delivery.</p>
-        <p class="mb-4">Expert in conducting training needs analyses, developing effective learning content, and delivering impactful onboarding, upskill, and refresher programs. Adept at reducing escalations and resolution times through targeted coaching, root-cause analysis, and workflow optimization.</p>
-        <p class="mt-4">Known for strong stakeholder management, cross-functional collaboration, and a data-driven approach to problem-solving. Committed to fostering a culture of continuous learning, employee engagement, and accountability. Passionate about empowering teams to deliver exceptional customer experiences while meeting organizational goals.</p>
+      <h2 class="section-title">About Me</h2>
+      <div class="card">
+        <p class="text-lg leading-relaxed">Experienced Operations Team Lead with 7+ years in technical support, training, and quality management within the SaaS, PaaS, E-commerce and EMR industry. Proven track record of leading high-performing teams to exceed key KPIs, including CSAT, QA adherence, and FCR. Skilled in coaching and mentoring, training program design, and process improvement to drive consistent, high-quality service delivery.</p>
+        <p class="mt-4 text-lg leading-relaxed">Expert in conducting training needs analyses, developing effective learning content, and delivering impactful onboarding, upskill, and refresher programs. Adept at reducing escalations and resolution times through targeted coaching, root-cause analysis, and workflow optimization.</p>
+        <p class="mt-4 text-lg leading-relaxed">Known for strong stakeholder management, cross-functional collaboration, and a data-driven approach to problem-solving. Committed to fostering a culture of continuous learning, employee engagement, and accountability. Passionate about empowering teams to deliver exceptional customer experiences while meeting organizational goals.</p>
       </div>
     </div>
   </section>
 
   <!-- EXPERIENCE -->
-<section id="experience" class="bg-gray-100 py-16 scroll-mt-[6rem]">
+<section id="experience" class="bg-gray-100 scroll-mt-[6rem]">
   <div class="container mx-auto px-4">
-    <h2 class="text-4xl font-bold text-center mb-6">Experience</h2>
+    <h2 class="section-title">Experience</h2>
 
     <!-- WebPT -->
-    <div class="bg-white rounded-xl shadow-md p-6 mb-6">
-      <h3 class="text-2xl font-semibold text-indigo-700">WebPT India Pvt. Ltd.</h3>
-      <p class="text-gray-600 mb-2"><strong>Hyderabad, Telangana | May 2023 – Present</strong></p>
+    <div class="card">
+      <h3 class="experience-card-title">WebPT India Pvt. Ltd.</h3>
+      <p class="experience-card-subtitle"><strong>Hyderabad, Telangana | May 2023 – Present</strong></p>
 
-      <p class="mb-2"><strong>Team Lead - Operations (March 2025 – Present)</strong></p>
-      <ul class="list-disc list-inside text-lg space-y-2 mb-4">
+      <p class="job-title-heading">Team Lead - Operations <span class="text-gray-600 font-normal">(March 2025 – Present)</span></p>
+      <ul class="list-disc list-inside text-lg space-y-2 mb-4 pl-5">
         <li>Lead a 20+ member support team providing high-quality EMR technical assistance over chat and email.</li>
         <li>Drive CSAT (Customer Satisfaction Score) consistently above target (95%+), ensuring exceptional member experiences.</li>
         <li>Monitor Average Resolution Time/Case Age to ensure issues are closed within SLA, reducing backlog and improving efficiency.</li>
@@ -206,8 +264,8 @@
         <li>Monitoring key performance metrics and creating actionable reports for leadership decision-making.</li>
       </ul>
 
-      <p class="mb-2"><strong>Support Team Lead Trainer (April 2024 - March 2025)</strong></p>
-      <ul class="list-disc list-inside text-lg space-y-2 mb-4">
+      <p class="job-title-heading">Support Team Lead Trainer <span class="text-gray-600 font-normal">(April 2024 - March 2025)</span></p>
+      <ul class="list-disc list-inside text-lg space-y-2 mb-4 pl-5">
         <li>Managed a team of trainers, overseeing their schedules, development plans, and productivity to deliver exceptional training results.</li>
         <li>Collaborated with stakeholders to define target audiences, assess training needs, and align delivery to meet timelines and business goals.</li>
         <li>Coordinated and delivered diverse training formats, including new hire onboarding, cross-training, refreshers, upskilling, and launch training.</li>
@@ -224,8 +282,8 @@
         <li>Documented processes and created training materials that improved consistency and reduced ramp time.</li>
       </ul>
 
-      <p class="mb-2"><strong>Trainer + QA Analyst (May 2023 - April 2024)</strong></p>
-      <ul class="list-disc list-inside text-lg space-y-2">
+      <p class="job-title-heading">Trainer + QA Analyst <span class="text-gray-600 font-normal">(May 2023 - April 2024)</span></p>
+      <ul class="list-disc list-inside text-lg space-y-2 pl-5">
         <li>Delivered technical support training programs to new hires and existing employees, ensuring readiness for live support.</li>
         <li>Developed comprehensive training materials including presentations, manuals, handouts, and eLearning content.</li>
         <li>Planned and organized training schedules to maximize attendance and learning outcomes.</li>
@@ -243,12 +301,12 @@
     </div>
 
     <!-- Amazon -->
-    <div class="bg-white rounded-xl shadow-md p-6 mb-6">
-      <h3 class="text-2xl font-semibold text-indigo-700">Amazon India</h3>
-      <p class="text-gray-600 mb-2"><strong>September 2018 – April 2023 | India</strong></p>
+    <div class="card">
+      <h3 class="experience-card-title">Amazon India</h3>
+      <p class="experience-card-subtitle"><strong>September 2018 – April 2023 | India</strong></p>
 
-      <p class="mb-2"><strong>Lead Trainer (Feb 2021 – April 2023)</strong></p>
-      <ul class="list-disc list-inside text-lg space-y-2 mb-4">
+      <p class="job-title-heading">Lead Trainer <span class="text-gray-600 font-normal">(Feb 2021 – April 2023)</span></p>
+      <ul class="list-disc list-inside text-lg space-y-2 mb-4 pl-5">
         <li>Owned the design, delivery, and evaluation of advanced training modules for technical support associates.</li>
         <li>Managed onboarding and refresher training for new batches, ensuring consistent improvements in QA and CSAT scores.</li>
         <li>Conducted regular assessments and used feedback to iterate and improve training programs.</li>
@@ -260,8 +318,8 @@
         <li>Maintained detailed records and analyses of training effectiveness to inform strategy and improve outcomes.</li>
       </ul>
 
-      <p class="mb-2"><strong>Interim Trainer (June 2020 – Feb 2021)</strong></p>
-      <ul class="list-disc list-inside text-lg space-y-2 mb-4">
+      <p class="job-title-heading">Interim Trainer <span class="text-gray-600 font-normal">(June 2020 – Feb 2021)</span></p>
+      <ul class="list-disc list-inside text-lg space-y-2 mb-4 pl-5">
         <li>Delivered training sessions on communication, problem-solving, and Amazon policy adherence for support teams.</li>
         <li>Customized content based on learner needs and process updates.</li>
         <li>Conducted evaluations and maintained detailed training records.</li>
@@ -271,8 +329,8 @@
         <li>Monitored and evaluated post-training performance to identify additional coaching opportunities.</li>
       </ul>
 
-      <p class="mb-2"><strong>SDA Associate (Sep 2018 – Feb 2021)</strong></p>
-      <ul class="list-disc list-inside text-lg space-y-2">
+      <p class="job-title-heading">SDA Associate (Customer Service Agent) <span class="text-gray-600 font-normal">(Sep 2018 – Feb 2021)</span></p>
+      <ul class="list-disc list-inside text-lg space-y-2 pl-5">
         <li>Managed delivery exceptions for Flex drivers, ensuring timely order fulfillment and minimal customer impact.</li>
         <li>Operated under strict deadlines and SLAs, demonstrating excellent time management and stress resilience.</li>
         <li>Developed creative solutions for system challenges, optimizing delivery experiences and reducing exceptions.</li>
@@ -286,11 +344,11 @@
 </section>
 
   <!-- EDUCATION -->
-  <section id="education" class="py-16 bg-white scroll-mt-[6rem]">
+  <section id="education" class="bg-white scroll-mt-[6rem]">
     <div class="container mx-auto px-4">
-      <h2 class="text-4xl font-bold text-center mb-6">Education</h2>
-      <div class="bg-white rounded-xl shadow-md p-6 max-w-3xl mx-auto text-lg leading-relaxed">
-        <ul class="list-disc list-inside space-y-2">
+      <h2 class="section-title">Education</h2>
+      <div class="card max-w-3xl mx-auto text-lg leading-relaxed">
+        <ul class="list-disc list-inside space-y-2 pl-5">
           <li><strong>B.Tech/BE</strong>, Computer Science & Engineering (2015 - 2018)</li>
           <li><strong>Diploma</strong> in Information Technology (Polytechnic) (2011 - 2015)</li>
         </ul>
@@ -298,13 +356,13 @@
     </div>
   </section>
   <!-- SKILLS -->
-<section id="skills" class="bg-gray-100 py-16 scroll-mt-[6rem]">
+<section id="skills" class="bg-gray-100 scroll-mt-[6rem]">
   <div class="container mx-auto px-4">
-    <h2 class="text-4xl font-bold text-center mb-6">Skills</h2>
+    <h2 class="section-title">Skills</h2>
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
-      <div class="bg-white rounded-xl shadow-md p-6">
+      <div class="card">
         <h3 class="text-xl font-semibold mb-3 text-indigo-700">Leadership & Management</h3>
-        <ul class="list-disc list-inside space-y-2 text-lg">
+        <ul class="list-disc list-inside space-y-2 text-lg pl-5">
           <li>Team Leadership, Performance Management, Conflict Resolution, Coaching & Mentoring</li>
           <li>Strategic planning to achieve KPIs like CSAT, QA, FCR, Escalation Rate</li>
           <li>Coaching & Mentoring</li>
@@ -313,9 +371,9 @@
           <li>Employee engagement and retention strategies</li>
         </ul>
       </div>
-      <div class="bg-white rounded-xl shadow-md p-6">
+      <div class="card">
         <h3 class="text-xl font-semibold mb-3 text-indigo-700">Operational Excellence</h3>
-        <ul class="list-disc list-inside space-y-2 text-lg">
+        <ul class="list-disc list-inside space-y-2 text-lg pl-5">
           <li>Workflow Optimization, Process Improvement</li>
           <li>Quality Assurance program design and delivery</li>
           <li>CSAT Improvement strategies</li>
@@ -323,9 +381,9 @@
           <li>Escalation management and root cause analysis</li>
         </ul>
       </div>
-      <div class="bg-white rounded-xl shadow-md p-6">
+      <div class="card">
         <h3 class="text-xl font-semibold mb-3 text-indigo-700">Professional & Personal</h3>
-        <ul class="list-disc list-inside space-y-2 text-lg">
+        <ul class="list-disc list-inside space-y-2 text-lg pl-5">
           <li>Self-motivation and discipline</li>
           <li>Strong time management, ability to handle multiple tasks</li>
           <li>Complex Problem Solving</li>
@@ -334,31 +392,37 @@
           <li>Continuous learner with a growth mindset</li>
         </ul>
       </div>
-       <div class="bg-white rounded-xl shadow-md p-6">
+       <div class="card">
         <h3 class="text-xl font-semibold mb-3 text-indigo-700">Training & Development</h3>
-        <ul class="list-disc list-inside space-y-2 text-lg">
+        <ul class="list-disc list-inside space-y-2 text-lg pl-5">
           <li>Training Needs Analysis, Content Design, Curriculum Development</li>
           <li>Classroom training, virtual training, and eLearning delivery</li>
           <li>LMS and content authoring tools (Articulate, Rise360, etc.)</li>
           <li>Assessing training effectiveness through surveys, assessments, and QA</li>
         </ul>
       </div>
-         <div class="bg-white rounded-xl shadow-md p-6">
+         <div class="card">
         <h3 class="text-xl font-semibold mb-3 text-indigo-700">Communication & Collaboration</h3>
-        <ul class="list-disc list-inside space-y-2 text-lg">
+        <ul class="list-disc list-inside space-y-2 text-lg pl-5">
           <li>Stakeholder management</li>
           <li>Cross-functional teamwork</li>
           <li>Interpersonal communication and presentation</li>
           <li>Conducting daily huddles, newsletters, knowledge checks</li>
         </ul>
       </div>
-               <div class="bg-white rounded-xl shadow-md p-6">
+               <div class="card">
         <h3 class="text-xl font-semibold mb-3 text-indigo-700">Technical & Analytical Skills</h3>
-        <ul class="list-disc list-inside space-y-2 text-lg">
-          <li>Data analysis to identify gaps and opportunities</li>
+        <ul class="list-disc list-inside space-y-2 text-lg pl-5">
+          <li>**Web Development Fundamentals:** HTML, CSS, JavaScript (demonstrated in 'Updates Tracker/Website' project)</li>
+          <li>**Advanced Spreadsheet Proficiency:** Microsoft Excel, Google Sheets (VLOOKUP, IMPORTRANGE, Pivot Tables, Data Visualization, Traffic-Light Color Coding - applied in 'Attendance Tracking System' and 'QA Automation')</li>
+          <li>**G-Suite Mastery:** Google Docs, Google Slides, Google Forms, Google Drive for collaborative workflows</li>
+          <li>**Salesforce Administration:** Creation of Dashboards and Reports in Salesforce for performance tracking and insights.</li>
+          <li>Data Analysis & Reporting to identify gaps and opportunities</li>
           <li>Process documentation and SOP development</li>
           <li>Familiarity with CRM, ticketing, and support tools</li>
           <li>Problem-solving, creative solutions design</li>
+          <li>Automation (e.g., in 'QA Automation' and 'Attendance Tracking System' projects)</li>
+          <li>**Slack Workflow Optimization:** Utilizing Slack for efficient team communication, daily knowledge checks, and project updates.</li>
         </ul>
       </div>
     </div>
@@ -366,63 +430,75 @@
 </section>
 
  <!-- PROJECTS -->
-<section id="projects" class="py-16 bg-white scroll-mt-[6rem]">
+<section id="projects" class="bg-white scroll-mt-[6rem]">
   <div class="container mx-auto px-4">
-    <h2 class="text-4xl font-bold text-center mb-6">Projects</h2>
+    <h2 class="section-title">Projects</h2>
     <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
 
-      <div class="bg-gray-50 rounded-xl shadow-md p-6">
+      <div class="card bg-gray-50">
         <h3 class="text-2xl font-semibold text-indigo-700 mb-2">QA Automation (WebPT)</h3>
         <p class="text-gray-700 mb-4">Status: COMPLETED</p>
-        <p class="text-lg leading-relaxed">Identified inefficiencies in the Training and QA team’s manual audit process, which led to errors and wasted time.</p>
-        <p class="text-lg leading-relaxed">Designed and implemented a streamlined system to automate audit data input, reducing manual errors by 90% and saving 40+ hours monthly.</p>
-        <p class="text-lg leading-relaxed">Improved visibility into QA results with better tracking and reporting, enhancing feedback quality and agent performance.</p>
-        <p class="text-lg leading-relaxed">Developed and implemented a system to automate QA audit data input, reducing manual errors by 90% and saving 40+ hours/month. Improved reporting consistency and enhanced analyst productivity significantly.</p>
+        <ul class="list-disc list-inside text-lg space-y-2 pl-5">
+          <li>Identified inefficiencies in the Training and QA team’s manual audit process, which led to errors and wasted time.</li>
+          <li>Designed and implemented a streamlined system to automate audit data input, reducing manual errors by 90% and saving 40+ hours monthly.</li>
+          <li>Improved visibility into QA results with better tracking and reporting, enhancing feedback quality and agent performance.</li>
+          <li>Developed and implemented a system to automate QA audit data input, reducing manual errors by 90% and saving 40+ hours/month. Improved reporting consistency and enhanced analyst productivity significantly.</li>
+        </ul>
       </div>
 
-      <div class="bg-gray-50 rounded-xl shadow-md p-6">
+      <div class="card bg-gray-50">
         <h3 class="text-2xl font-semibold text-indigo-700 mb-2">Updates Tracker/Website (WebPT)</h3>
         <p class="text-gray-700 mb-4">Status: COMPLETED</p>
-        <p class="text-lg leading-relaxed">Identified fragmented communication as a barrier to knowledge sharing.</p>
-        <p class="text-lg leading-relaxed">Developed a centralized tracker and mini-website to consolidate updates, new SOPs, and process changes.</p>
-        <p class="text-lg leading-relaxed">Reduced missed communications during shifts and improved team alignment and accountability.</p>
-        <p class="text-lg leading-relaxed">Designed and deployed a central website to track team updates, new process changes, and knowledge articles, ensuring better transparency and reducing missed communication during shifts.</p>
+        <ul class="list-disc list-inside text-lg space-y-2 pl-5">
+          <li>Identified fragmented communication as a barrier to knowledge sharing.</li>
+          <li>Developed a centralized tracker and mini-website to consolidate updates, new SOPs, and process changes.</li>
+          <li>Reduced missed communications during shifts and improved team alignment and accountability.</li>
+          <li>Designed and deployed a central website to track team updates, new process changes, and knowledge articles, ensuring better transparency and reducing missed communication during shifts.</li>
+        </ul>
       </div>
 
-      <div class="bg-gray-50 rounded-xl shadow-md p-6">
+      <div class="card bg-gray-50">
         <h3 class="text-2xl font-semibold text-indigo-700 mb-2">Soft-skills Course (WebPT)</h3>
         <p class="text-gray-700 mb-4">Status: COMPLETED</p>
-        <p class="text-lg leading-relaxed">Recognized a gap in customer service soft skills across the team.</p>
-        <p class="text-lg leading-relaxed">Created and delivered an engaging, interactive training session using role-plays, discussions, and assessments.</p>
-        <p class="text-lg leading-relaxed">Elevated customer service standards, leading to measurable CSAT improvements and lower escalation rates.</p>
-        <p class="text-lg leading-relaxed">Empowered agents with better empathy, communication, and conflict-resolution skills.</p>
-        <p class="text-lg leading-relaxed">Created and delivered an interactive soft-skills training program covering empathy, communication, and conflict management, resulting in a 15% boost in CSAT scores and reduced escalations.</p>
+        <ul class="list-disc list-inside text-lg space-y-2 pl-5">
+          <li>Recognized a gap in customer service soft skills across the team.</li>
+          <li>Created and delivered an engaging, interactive training session using role-plays, discussions, and assessments.</li>
+          <li>Elevated customer service standards, leading to measurable CSAT improvements and lower escalation rates.</li>
+          <li>Empowered agents with better empathy, communication, and conflict-resolution skills.</li>
+          <li>Created and delivered an interactive soft-skills training program covering empathy, communication, and conflict management, resulting in a 15% boost in CSAT scores and reduced escalations.</li>
+        </ul>
       </div>
 
-      <div class="bg-gray-50 rounded-xl shadow-md p-6">
+      <div class="card bg-gray-50">
         <h3 class="text-2xl font-semibold text-indigo-700 mb-2">Attendance Tracking System (WebPT)</h3>
         <p class="text-gray-700 mb-4">Status: COMPLETED</p>
-        <p class="text-lg leading-relaxed">Created a user-friendly attendance sheet with automated calculations for present days, leave types (planned/unplanned), half-days, site-offs, and monthly shrinkage.</p>
-        <p class="text-lg leading-relaxed">Simplified shift planning for leads, reduced manual errors, and improved resource allocation.</p>
-        <p class="text-lg leading-relaxed">Built an automated system for tracking daily attendance and leave requests, visualizing leave availability with traffic-light color coding. Improved shift planning accuracy and reduced manual errors.</p>
+        <ul class="list-disc list-inside text-lg space-y-2 pl-5">
+          <li>Created a user-friendly attendance sheet with automated calculations for present days, leave types (planned/unplanned), half-days, site-offs, and monthly shrinkage.</li>
+          <li>Simplified shift planning for leads, reduced manual errors, and improved resource allocation.</li>
+          <li>Built an automated system for tracking daily attendance and leave requests, visualizing leave availability with traffic-light color coding. Improved shift planning accuracy and reduced manual errors.</li>
+        </ul>
       </div>
 
-      <div class="bg-gray-50 rounded-xl shadow-md p-6">
+      <div class="card bg-gray-50">
         <h3 class="text-2xl font-semibold text-indigo-700 mb-2">Knowledge Check (WebPT)</h3>
         <p class="text-gray-700 mb-4">Status: COMPLETED</p>
-        <p class="text-lg leading-relaxed">Launched daily Slack-based knowledge questions to encourage continuous learning and teamwork.</p>
-        <p class="text-lg leading-relaxed">Reduced repeat errors by reinforcing critical workflows and promoting peer discussions.</p>
-        <p class="text-lg leading-relaxed">Fostered a culture of shared learning and curiosity.</p>
-        <p class="text-lg leading-relaxed">Launched daily Slack questions to reinforce critical knowledge areas, fostering team collaboration and continuous learning. Helped reduce common errors by 20% over three months.</p>
+        <ul class="list-disc list-inside text-lg space-y-2 pl-5">
+          <li>Launched daily Slack-based knowledge questions to encourage continuous learning and teamwork.</li>
+          <li>Reduced repeat errors by reinforcing critical workflows and promoting peer discussions.</li>
+          <li>Fostered a culture of shared learning and curiosity.</li>
+          <li>Launched daily Slack questions to reinforce critical knowledge areas, fostering team collaboration and continuous learning. Helped reduce common errors by 20% over three months.</li>
+        </ul>
       </div>
 
-      <div class="bg-gray-50 rounded-xl shadow-md p-6">
+      <div class="card bg-gray-50">
         <h3 class="text-2xl font-semibold text-indigo-700 mb-2">Comprehensive Training for Bottom Performers (WebPT)</h3>
         <p class="text-gray-700 mb-4">Status: COMPLETED</p>
-        <p class="text-lg leading-relaxed">Identified agents struggling with performance metrics through QA scores and CSAT feedback.</p>
-        <p class="text-lg leading-relaxed">Designed and led a structured weekly program with shadowing, personalized coaching, and targeted skills development.</p>
-        <p class="text-lg leading-relaxed">Achieved an average 30% improvement in QA scores among participants, boosting overall team performance and morale.</p>
-        <p class="text-lg leading-relaxed">Introduced weekly shadowing and coaching sessions for agents with lower performance metrics. Resulted in a 30% improvement in QA scores and increased team morale.</p>
+        <ul class="list-disc list-inside text-lg space-y-2 pl-5">
+          <li>Identified agents struggling with performance metrics through QA scores and CSAT feedback.</li>
+          <li>Designed and led a structured weekly program with shadowing, personalized coaching, and targeted skills development.</li>
+          <li>Achieved an average 30% improvement in QA scores among participants, boosting overall team performance and morale.</li>
+          <li>Introduced weekly shadowing and coaching sessions for agents with lower performance metrics. Resulted in a 30% improvement in QA scores and increased team morale.</li>
+        </ul>
       </div>
 
     </div>
@@ -430,17 +506,17 @@
 </section>
 
   <!-- CONTACT -->
-  <section id="contact" class="py-16 bg-indigo-50 scroll-mt-[6rem]">
+  <section id="contact" class="bg-indigo-50 scroll-mt-[6rem]">
     <div class="container mx-auto px-4 max-w-2xl text-center">
-      <h2 class="text-4xl font-bold text-indigo-700 mb-6">Get in Touch</h2>
+      <h2 class="section-title text-indigo-700">Get in Touch</h2>
       <p class="text-lg mb-4">I'm always open to new opportunities and collaborations. Feel free to reach out!</p>
-      <div class="bg-white rounded-xl shadow-md p-6">
+      <div class="card">
         <p class="text-lg mb-2"><strong>Phone:</strong> <a href="tel:+918766708714" class="text-indigo-600 hover:underline">(+91) 8766708714</a></p>
         <p class="text-lg mb-4"><strong>Email:</strong> <a href="mailto:pranay.jaiswal.1995@gmail.com" class="text-indigo-600 hover:underline">pranay.jaiswal.1995@gmail.com</a></p>
         <p class="text-lg mb-4"><strong>Address:</strong> Hyderabad, Telangana</p>
         <div class="flex flex-col md:flex-row justify-center items-center gap-4 mt-4">
-          <a href="https://www.linkedin.com/in/pranay-jaiswal-4474952a7/" target="_blank" class="bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-3 px-6 rounded-lg shadow-lg transition duration-300 w-full md:w-auto text-center">🌐 View LinkedIn</a>
-          <a href="https://raw.githubusercontent.com/Pranay-Jaiswal-1995/pranay-jaiswal-portfolio/main/Pranay%20Jaiswal%20-%20Resume%20(2025).pdf" target="_blank" class="bg-green-600 hover:bg-green-700 text-white font-semibold py-3 px-6 rounded-lg shadow-lg transition duration-300 w-full md:w-auto text-center">📄 Download CV</a>
+          <a href="https://www.linkedin.com/in/pranay-jaiswal-4474952a7/" target="_blank" class="bg-indigo-600 text-white font-semibold py-3 px-6 rounded-lg shadow-lg transition duration-300 w-full md:w-auto text-center hover:bg-indigo-700 hover:scale-105 transform">🌐 View LinkedIn</a>
+          <a href="https://raw.githubusercontent.com/Pranay-Jaiswal-1995/pranay-jaiswal-portfolio/main/Pranay%20Jaiswal%20-%20Resume%20(2025).pdf" target="_blank" class="bg-green-600 text-white font-semibold py-3 px-6 rounded-lg shadow-lg transition duration-300 w-full md:w-auto text-center hover:bg-green-700 hover:scale-105 transform">📄 Download CV</a>
         </div>
       </div>
     </div>
